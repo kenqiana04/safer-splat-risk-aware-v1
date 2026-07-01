@@ -1,0 +1,32 @@
+/disk1/zlab/projects/safer-splat/ns_utils/nerfstudio_utils.py:117: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  assert(self.pipeline.model, SplatfactoModel)
+checkpoint=/disk1/zlab/projects/safer-splat/outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml
+device=cuda
+Skipping 0 files in dataset split train.
+Skipping 0 files in dataset split test.
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/stonehenge/splatfacto/2024-09-11_100724/nerfstudio_models/step-000029999.ckpt
+There are 116446 Gaussians in the GSplat model
+{
+  "checkpoint": "outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml",
+  "gaussian_count": 116446,
+  "device": "cuda",
+  "available_attributes": [
+    "means",
+    "scales",
+    "max/min/mean scale",
+    "anisotropy",
+    "volume_proxy",
+    "distance_to_scene_center",
+    "opacity",
+    "rotation/quaternion",
+    "color_or_sh_norm"
+  ],
+  "missing_attributes": [],
+  "outputs": {
+    "full_csv": "work/risk_aware_cbf/results/stonehenge_gaussian_attributes.csv",
+    "sample_csv": "work/risk_aware_cbf/results/stonehenge_gaussian_attributes_sample.csv",
+    "summary_csv": "work/risk_aware_cbf/results/stonehenge_gaussian_attribute_summary.csv",
+    "histograms": "work/risk_aware_cbf/figures/stonehenge_gaussian_attribute_histograms.png"
+  }
+}

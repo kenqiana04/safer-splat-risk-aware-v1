@@ -1,0 +1,37 @@
+/disk1/zlab/projects/safer-splat/ns_utils/nerfstudio_utils.py:117: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  assert(self.pipeline.model, SplatfactoModel)
+[2026-06-29T19:10:41] script=/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py
+[2026-06-29T19:10:41] scene=stonehenge methods=['no_filter', 'safer_splat_filter', 'risk_aware_topk_v0'] trials=0-2
+[2026-06-29T19:10:41] risk_aware_topk=topk=300 h_critical=0.0006 near_distance_threshold=0.05 risk_score=risk_v2_hybrid
+Skipping 0 files in dataset split train.
+Skipping 0 files in dataset split test.
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/stonehenge/splatfacto/2024-09-11_100724/nerfstudio_models/step-000029999.ckpt
+There are 116446 Gaussians in the GSplat model
+[2026-06-29T19:10:46] loaded_risk_score_table=work/risk_aware_cbf/results/risk_score_table_v0.csv
+[2026-06-29T19:10:46] start method=no_filter trial=0
+[2026-06-29T19:10:52] done method=no_filter trial=0 stop=stopped_before_goal collision=True steps=343 min_h=-0.00022564719256479293
+[2026-06-29T19:10:52] start method=no_filter trial=1
+[2026-06-29T19:10:58] done method=no_filter trial=1 stop=stopped_before_goal collision=True steps=342 min_h=-0.00022498128237202764
+[2026-06-29T19:10:58] start method=no_filter trial=2
+[2026-06-29T19:11:04] done method=no_filter trial=2 stop=stopped_before_goal collision=True steps=340 min_h=-0.00022701872512698174
+[2026-06-29T19:11:05] start method=safer_splat_filter trial=0
+ball-to-ellipsoid
+[2026-06-29T19:11:29] done method=safer_splat_filter trial=0 stop=stopped_before_goal collision=False steps=325 min_h=0.0008511263877153397
+[2026-06-29T19:11:30] start method=safer_splat_filter trial=1
+ball-to-ellipsoid
+[2026-06-29T19:11:38] done method=safer_splat_filter trial=1 stop=stopped_before_goal collision=False steps=114 min_h=0.0008069269824773073
+[2026-06-29T19:11:39] start method=safer_splat_filter trial=2
+ball-to-ellipsoid
+[2026-06-29T19:11:46] done method=safer_splat_filter trial=2 stop=stopped_before_goal collision=False steps=104 min_h=0.001313697430305183
+[2026-06-29T19:11:47] start method=risk_aware_topk_v0 trial=0
+ball-to-ellipsoid
+[2026-06-29T19:12:12] done method=risk_aware_topk_v0 trial=0 stop=stopped_before_goal collision=False steps=325 min_h=0.0008511265041306615
+[2026-06-29T19:12:13] start method=risk_aware_topk_v0 trial=1
+ball-to-ellipsoid
+[2026-06-29T19:12:22] done method=risk_aware_topk_v0 trial=1 stop=stopped_before_goal collision=False steps=114 min_h=0.0008069268660619855
+[2026-06-29T19:12:22] start method=risk_aware_topk_v0 trial=2
+ball-to-ellipsoid
+[2026-06-29T19:12:30] done method=risk_aware_topk_v0 trial=2 stop=stopped_before_goal collision=False steps=104 min_h=0.0013136969646438956
+[2026-06-29T19:12:32] final_summary=[{"scene": "stonehenge", "method": "no_filter", "rows": 3, "success_count": 0, "collision_count": 3, "collision_free_count": 0, "stopped_before_goal_count": 3, "solver_failed_count": 0, "min_safety_h_min": -0.00022701872512698174, "min_safety_h_mean": -0.00022588240002126744, "goal_distance_reduction_ratio_mean": 0.9913371756492282, "final_goal_distance_mean": 0.0067925976950295635, "closest_goal_distance_mean": 0.00042296529240988897, "num_steps_mean": 341.6666666666667, "runtime_mean_mean": 2.009803500979478e-05, "runtime_p95_mean": 2.5116434941689176e-05, "intervention_rate_mean": 0.0, "control_deviation_mean_mean": 0.0, "active_constraints_mean_mean": 0.0, "qp_infeasible_count_sum": 0}, {"scene": "stonehenge", "method": "risk_aware_topk_v0", "rows": 3, "success_count": 0, "collision_count": 0, "collision_free_count": 3, "stopped_before_goal_count": 3, "solver_failed_count": 0, "min_safety_h_min": 0.0008069268660619855, "min_safety_h_mean": 0.0009905834449455142, "goal_distance_reduction_ratio_mean": 0.40180828555717424, "final_goal_distance_mean": 0.46906883639845437, "closest_goal_distance_mean": 0.46906883639845437, "num_steps_mean": 181.0, "runtime_mean_mean": 0.05868035583492507, "runtime_p95_mean": 0.06675752457231283, "intervention_rate_mean": 0.9591520467836258, "control_deviation_mean_mean": 0.05253576096451673, "active_constraints_mean_mean": 277.718126405758, "qp_infeasible_count_sum": 0}, {"scene": "stonehenge", "method": "safer_splat_filter", "rows": 3, "success_count": 0, "collision_count": 0, "collision_free_count": 3, "stopped_before_goal_count": 3, "solver_failed_count": 0, "min_safety_h_min": 0.0008069269824773073, "min_safety_h_mean": 0.0009905836001659434, "goal_distance_reduction_ratio_mean": 0.4018082982258126, "final_goal_distance_mean": 0.4690688264632958, "closest_goal_distance_mean": 0.4690688264632958, "num_steps_mean": 181.0, "runtime_mean_mean": 0.057074419453135156, "runtime_p95_mean": 0.06612443945681055, "intervention_rate_mean": 0.9591520467836258, "control_deviation_mean_mean": 0.05253575512589793, "active_constraints_mean_mean": 416.41058929374714, "qp_infeasible_count_sum": 0}]
+[2026-06-29T19:12:32] wrote=work/risk_aware_cbf/results/risk_aware_topk_stonehenge_smoke3

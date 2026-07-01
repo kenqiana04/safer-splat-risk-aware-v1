@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-06-30T12:25:12",
+  "script": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py",
+  "config": {
+    "scene": "stonehenge",
+    "methods": [
+      "risk_aware_topk_v0"
+    ],
+    "trial_start": 0,
+    "trial_end": 19,
+    "max_steps": 800,
+    "topk": 300,
+    "h_critical": 0.0006,
+    "near_distance_threshold": 0.05,
+    "risk_score": "risk_v0_active_frequency",
+    "risk_score_table": "work/risk_aware_cbf/results/risk_score_table_v0.csv",
+    "goal_tolerance": 0.001,
+    "min_required_constraints": 1,
+    "heading_force_threshold": 0.65,
+    "heading_force_distance": 0.15,
+    "output_dir": "work/risk_aware_cbf/results/risk_aware_topk_ablation_stonehenge_20/F_topk300_h0006_activefreq",
+    "resume": true,
+    "skip_existing": true,
+    "device": "cuda",
+    "active_log_limit": 0
+  },
+  "min_safety_h_note": "official GSplatLoader.query_distance safety h value; not meters",
+  "risk_aware_topk": {
+    "insertion_point": "reproduction wrapper after baseline CBF minimal constraints and before Clarabel QP solve",
+    "topk": 300,
+    "h_critical": 0.0006,
+    "near_distance_threshold": 0.05,
+    "risk_score": "risk_v0_active_frequency",
+    "hard_fallback": "keeps low-h, near-field, and heading-cone constraints; falls back to baseline on incomplete metadata"
+  },
+  "summary": [
+    {
+      "scene": "stonehenge",
+      "method": "risk_aware_topk_v0",
+      "rows": 20,
+      "success_count": 0,
+      "collision_count": 0,
+      "collision_free_count": 20,
+      "stopped_before_goal_count": 20,
+      "solver_failed_count": 0,
+      "min_safety_h_min": 0.0003336713125463575,
+      "min_safety_h_mean": 0.0007631136802956461,
+      "goal_distance_reduction_ratio_mean": 0.5711932778092528,
+      "final_goal_distance_mean": 0.33623597877324307,
+      "closest_goal_distance_mean": 0.33531257190967534,
+      "num_steps_mean": 247.75,
+      "runtime_mean_mean": 0.0599662861631554,
+      "runtime_p95_mean": 0.06892201171722262,
+      "intervention_rate_mean": 0.9111630777212097,
+      "control_deviation_mean_mean": 0.059337660653138447,
+      "active_constraints_mean_mean": 289.56293132909786,
+      "qp_infeasible_count_sum": 0
+    }
+  ]
+}

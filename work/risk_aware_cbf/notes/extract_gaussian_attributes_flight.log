@@ -1,0 +1,30 @@
+scene=flight
+checkpoint=/disk1/zlab/projects/safer-splat/outputs/flight/splatfacto/2024-09-12_172434/config.yml
+device=cuda
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/flight/splatfacto/2024-09-12_172434/nerfstudio_models/step-000029999.ckpt
+There are 281756 Gaussians in the GSplat model
+{
+  "scene": "flight",
+  "checkpoint": "outputs/flight/splatfacto/2024-09-12_172434/config.yml",
+  "gaussian_count": 281756,
+  "device": "cuda",
+  "available_attributes": [
+    "means",
+    "scales",
+    "max/min/mean scale",
+    "anisotropy",
+    "volume_proxy",
+    "distance_to_scene_center",
+    "opacity",
+    "rotation/quaternion",
+    "color_or_sh_norm"
+  ],
+  "missing_attributes": [],
+  "outputs": {
+    "full_csv": "work/risk_aware_cbf/results/flight_gaussian_attributes.csv",
+    "sample_csv": "work/risk_aware_cbf/results/flight_gaussian_attributes_sample.csv",
+    "summary_csv": "work/risk_aware_cbf/results/flight_gaussian_attribute_summary.csv",
+    "histograms": "work/risk_aware_cbf/figures/flight_gaussian_attribute_histograms.png"
+  }
+}

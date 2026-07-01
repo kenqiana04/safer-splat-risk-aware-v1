@@ -1,0 +1,5 @@
+[OK] open3d 0.19.0
+[OK] nerfstudio no __version__
+[OK] viser no __version__
+[OK] torch 2.1.2+cu118
+[OK] numpy 1.26.4

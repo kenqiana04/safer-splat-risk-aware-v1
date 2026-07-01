@@ -1,0 +1,74 @@
+/disk1/zlab/projects/safer-splat/ns_utils/nerfstudio_utils.py:117: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  assert(self.pipeline.model, SplatfactoModel)
+[2026-06-30T11:43:53] script=/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py
+[2026-06-30T11:43:53] scene=stonehenge methods=['risk_aware_topk_v0'] trials=0-19
+[2026-06-30T11:43:53] risk_aware_topk=topk=150 h_critical=0.0006 near_distance_threshold=0.05 risk_score=risk_v2_hybrid
+Skipping 0 files in dataset split train.
+Skipping 0 files in dataset split test.
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/stonehenge/splatfacto/2024-09-11_100724/nerfstudio_models/step-000029999.ckpt
+There are 116446 Gaussians in the GSplat model
+[2026-06-30T11:43:58] loaded_risk_score_table=work/risk_aware_cbf/results/risk_score_table_v0.csv
+[2026-06-30T11:43:58] start method=risk_aware_topk_v0 trial=0
+ball-to-ellipsoid
+[2026-06-30T11:44:24] done method=risk_aware_topk_v0 trial=0 stop=stopped_before_goal collision=False steps=325 min_h=0.0008511253399774432
+[2026-06-30T11:44:24] start method=risk_aware_topk_v0 trial=1
+ball-to-ellipsoid
+[2026-06-30T11:44:33] done method=risk_aware_topk_v0 trial=1 stop=stopped_before_goal collision=False steps=114 min_h=0.0008074630750343204
+[2026-06-30T11:44:33] start method=risk_aware_topk_v0 trial=2
+ball-to-ellipsoid
+[2026-06-30T11:44:41] done method=risk_aware_topk_v0 trial=2 stop=stopped_before_goal collision=False steps=104 min_h=0.001313697313889861
+[2026-06-30T11:44:42] start method=risk_aware_topk_v0 trial=3
+ball-to-ellipsoid
+[2026-06-30T11:44:52] done method=risk_aware_topk_v0 trial=3 stop=stopped_before_goal collision=False steps=123 min_h=0.000801107962615788
+[2026-06-30T11:44:52] start method=risk_aware_topk_v0 trial=4
+ball-to-ellipsoid
+[2026-06-30T11:45:20] done method=risk_aware_topk_v0 trial=4 stop=stopped_before_goal collision=False steps=357 min_h=0.000838584266602993
+[2026-06-30T11:45:20] start method=risk_aware_topk_v0 trial=5
+ball-to-ellipsoid
+[2026-06-30T11:45:34] done method=risk_aware_topk_v0 trial=5 stop=stopped_before_goal collision=False steps=170 min_h=0.0007147197611629963
+[2026-06-30T11:45:34] start method=risk_aware_topk_v0 trial=6
+ball-to-ellipsoid
+[2026-06-30T11:45:53] done method=risk_aware_topk_v0 trial=6 stop=stopped_before_goal collision=False steps=243 min_h=0.0005385844269767404
+[2026-06-30T11:45:54] start method=risk_aware_topk_v0 trial=7
+ball-to-ellipsoid
+[2026-06-30T11:46:11] done method=risk_aware_topk_v0 trial=7 stop=stopped_before_goal collision=False steps=225 min_h=0.0008742116624489427
+[2026-06-30T11:46:12] start method=risk_aware_topk_v0 trial=8
+ball-to-ellipsoid
+[2026-06-30T11:46:37] done method=risk_aware_topk_v0 trial=8 stop=stopped_before_goal collision=False steps=331 min_h=0.0006320527754724026
+[2026-06-30T11:46:38] start method=risk_aware_topk_v0 trial=9
+ball-to-ellipsoid
+[2026-06-30T11:47:02] done method=risk_aware_topk_v0 trial=9 stop=stopped_before_goal collision=False steps=303 min_h=0.0011710417456924915
+[2026-06-30T11:47:03] start method=risk_aware_topk_v0 trial=10
+ball-to-ellipsoid
+[2026-06-30T11:47:23] done method=risk_aware_topk_v0 trial=10 stop=stopped_before_goal collision=False steps=262 min_h=0.0005337559850886464
+[2026-06-30T11:47:24] start method=risk_aware_topk_v0 trial=11
+ball-to-ellipsoid
+[2026-06-30T11:47:50] done method=risk_aware_topk_v0 trial=11 stop=stopped_before_goal collision=False steps=347 min_h=0.00046901879250071943
+[2026-06-30T11:47:51] start method=risk_aware_topk_v0 trial=12
+ball-to-ellipsoid
+[2026-06-30T11:48:20] done method=risk_aware_topk_v0 trial=12 stop=stopped_before_goal collision=False steps=364 min_h=0.00033367154537700117
+[2026-06-30T11:48:20] start method=risk_aware_topk_v0 trial=13
+ball-to-ellipsoid
+[2026-06-30T11:48:30] done method=risk_aware_topk_v0 trial=13 stop=stopped_before_goal collision=False steps=123 min_h=0.0007767628412693739
+[2026-06-30T11:48:31] start method=risk_aware_topk_v0 trial=14
+ball-to-ellipsoid
+[2026-06-30T11:48:40] done method=risk_aware_topk_v0 trial=14 stop=stopped_before_goal collision=False steps=115 min_h=0.001072274404577911
+[2026-06-30T11:48:40] start method=risk_aware_topk_v0 trial=15
+ball-to-ellipsoid
+[2026-06-30T11:48:50] done method=risk_aware_topk_v0 trial=15 stop=stopped_before_goal collision=False steps=128 min_h=0.0005745131056755781
+[2026-06-30T11:48:51] start method=risk_aware_topk_v0 trial=16
+ball-to-ellipsoid
+[2026-06-30T11:48:54] done method=risk_aware_topk_v0 trial=16 stop=stopped_before_goal collision=False steps=39 min_h=0.0010280627757310867
+[2026-06-30T11:48:55] start method=risk_aware_topk_v0 trial=17
+ball-to-ellipsoid
+[2026-06-30T11:49:31] done method=risk_aware_topk_v0 trial=17 stop=stopped_before_goal collision=False steps=465 min_h=0.0004926064284518361
+[2026-06-30T11:49:31] start method=risk_aware_topk_v0 trial=18
+ball-to-ellipsoid
+[2026-06-30T11:50:03] done method=risk_aware_topk_v0 trial=18 stop=stopped_before_goal collision=False steps=411 min_h=0.0006928758230060339
+[2026-06-30T11:50:03] start method=risk_aware_topk_v0 trial=19
+ball-to-ellipsoid
+[2026-06-30T11:50:35] done method=risk_aware_topk_v0 trial=19 stop=stopped_before_goal collision=False steps=404 min_h=0.0007741814479231834
+[2026-06-30T11:50:36] final_summary=[{"scene": "stonehenge", "method": "risk_aware_topk_v0", "rows": 20, "success_count": 0, "collision_count": 0, "collision_free_count": 20, "stopped_before_goal_count": 20, "solver_failed_count": 0, "min_safety_h_min": 0.00033367154537700117, "min_safety_h_mean": 0.0007645155739737675, "goal_distance_reduction_ratio_mean": 0.5711912208769162, "final_goal_distance_mean": 0.33623758562796713, "closest_goal_distance_mean": 0.3353267384709463, "num_steps_mean": 247.65, "runtime_mean_mean": 0.06016848410680954, "runtime_p95_mean": 0.069046281715855, "intervention_rate_mean": 0.9072577612196993, "control_deviation_mean_mean": 0.059316710254280224, "active_constraints_mean_mean": 156.81418088630886, "qp_infeasible_count_sum": 0}]
+[2026-06-30T11:50:36] wrote=work/risk_aware_cbf/results/risk_aware_topk_ablation_stonehenge_20/A_topk150_h0006_hybrid
+/disk1/zlab/conda_envs/safer_splat_official/bin/python /disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py --scene stonehenge --methods risk_aware_topk_v0 --trial-start 0 --trial-end 19 --max-steps 800 --topk 150 --h-critical 0.0006 --near-distance-threshold 0.05 --risk-score risk_v2_hybrid --output-dir work/risk_aware_cbf/results/risk_aware_topk_ablation_stonehenge_20/A_topk150_h0006_hybrid --device cuda --resume --skip-existing

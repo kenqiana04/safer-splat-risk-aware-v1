@@ -1,0 +1,58 @@
+{
+  "scene": "flight",
+  "inputs": {
+    "attributes": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/flight_gaussian_attributes.csv",
+    "active_frequency": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/flight_active_gaussian_frequency.csv",
+    "active_constraints": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/baseline_detailed_logging_flight_100/active_constraints.csv"
+  },
+  "outputs": {
+    "table": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/flight_risk_score_table_v0.csv",
+    "summary": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/flight_risk_score_summary_v0.csv",
+    "figure": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/figures/flight_risk_score_distribution_v0.png"
+  },
+  "normalization": {
+    "active_frequency_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 0.0,
+      "clip_high": 1.0,
+      "log1p": true,
+      "missing_filled_with": 0.0
+    },
+    "opacity_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 0.1655504040420055,
+      "clip_high": 0.999992609024048,
+      "log1p": false,
+      "missing_filled_with": 0.0
+    },
+    "max_scale_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 0.00044711413189193073,
+      "clip_high": 0.05102738337137741,
+      "log1p": true,
+      "missing_filled_with": 0.0
+    },
+    "anisotropy_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 0.9374830621116214,
+      "clip_high": 7.289515742981154,
+      "log1p": true,
+      "missing_filled_with": 0.0
+    },
+    "volume_proxy_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 1.7158626907388056e-12,
+      "clip_high": 6.798904317923856e-06,
+      "log1p": true,
+      "missing_filled_with": 0.0
+    }
+  },
+  "active_frequency_available": false,
+  "active_constraints_available": false,
+  "missing_active_frequency": "filled with zero"
+}

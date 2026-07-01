@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/disk1/zlab/projects/safer-splat/run.py", line 10, in <module>
+    from splat.gsplat_utils import GSplatLoader
+  File "/disk1/zlab/projects/safer-splat/splat/gsplat_utils.py", line 4, in <module>
+    import open3d as o3d
+ModuleNotFoundError: No module named 'open3d'

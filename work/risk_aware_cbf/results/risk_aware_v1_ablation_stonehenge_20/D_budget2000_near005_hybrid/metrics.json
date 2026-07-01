@@ -1,0 +1,61 @@
+{
+  "created_at": "2026-06-30T17:50:41",
+  "script": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_risk_aware_v1_pre_cbf_comparison.py",
+  "config": {
+    "scene": "stonehenge",
+    "methods": [
+      "risk_aware_v1_pre_cbf"
+    ],
+    "trial_start": 0,
+    "trial_end": 19,
+    "max_steps": 800,
+    "candidate_budget": 2000,
+    "near_distance_threshold": 0.05,
+    "heading_distance_threshold": 0.25,
+    "heading_cos_threshold": 0.5,
+    "risk_score": "risk_v2_hybrid",
+    "risk_score_table": "work/risk_aware_cbf/results/risk_score_table_v0.csv",
+    "goal_tolerance": 0.001,
+    "min_candidate_budget": 200,
+    "output_dir": "work/risk_aware_cbf/results/risk_aware_v1_ablation_stonehenge_20/D_budget2000_near005_hybrid",
+    "resume": true,
+    "skip_existing": true,
+    "device": "cuda",
+    "active_log_limit": 0
+  },
+  "min_safety_h_note": "official GSplatLoader.query_distance safety h value; not meters",
+  "risk_aware_v1_pre_cbf": {
+    "insertion_point": "reproduction-only SubsetGSplatLoader before distance query and CBF matrix construction",
+    "actual_insertion_level": "partial_pre_cbf",
+    "candidate_budget": 2000,
+    "near_distance_threshold": 0.05,
+    "heading_distance_threshold": 0.25,
+    "heading_cos_threshold": 0.5,
+    "risk_score": "risk_v2_hybrid",
+    "hard_fallback": "keeps near-field, heading-cone, and locally relevant high-active-frequency candidates; falls back to full baseline if the selected subset is too small or selector metadata fails"
+  },
+  "summary": [
+    {
+      "scene": "stonehenge",
+      "method": "risk_aware_v1_pre_cbf",
+      "rows": 20,
+      "success_count": 0,
+      "collision_count": 0,
+      "collision_free_count": 20,
+      "stopped_before_goal_count": 20,
+      "solver_failed_count": 0,
+      "min_safety_h_min": 0.00033367154537700117,
+      "min_safety_h_mean": 0.0007634574838448315,
+      "goal_distance_reduction_ratio_mean": 0.571140785810244,
+      "final_goal_distance_mean": 0.3362771299904927,
+      "closest_goal_distance_mean": 0.33531010242784964,
+      "num_steps_mean": 247.6,
+      "runtime_mean_mean": 0.034781401518130556,
+      "runtime_p95_mean": 0.03878582338336855,
+      "intervention_rate_mean": 0.9049045488066112,
+      "control_deviation_mean_mean": 0.05930314238665938,
+      "active_constraints_mean_mean": 176.0924921781824,
+      "qp_infeasible_count_sum": 0
+    }
+  ]
+}

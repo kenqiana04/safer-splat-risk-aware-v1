@@ -1,0 +1,55 @@
+{
+  "inputs": {
+    "attributes": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/stonehenge_gaussian_attributes.csv",
+    "active_frequency": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/active_gaussian_frequency.csv",
+    "active_constraints": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/baseline_detailed_logging_stonehenge_100/active_constraints.csv"
+  },
+  "outputs": {
+    "table": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/risk_score_table_v0.csv",
+    "summary": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/risk_score_summary_v0.csv",
+    "figure": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/figures/risk_score_distribution_v0.png"
+  },
+  "normalization": {
+    "active_frequency_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 0.0,
+      "clip_high": 4.663439094112067,
+      "log1p": true,
+      "missing_filled_with": 0.0
+    },
+    "opacity_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 0.1000000014901161,
+      "clip_high": 0.9999980926513672,
+      "log1p": false,
+      "missing_filled_with": 0.0
+    },
+    "max_scale_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 0.00039343926917442677,
+      "clip_high": 0.23060082313852986,
+      "log1p": true,
+      "missing_filled_with": 0.0
+    },
+    "anisotropy_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 0.6931471805599453,
+      "clip_high": 12.981108454104293,
+      "log1p": true,
+      "missing_filled_with": 0.0
+    },
+    "volume_proxy_norm": {
+      "lower_percentile": 1.0,
+      "upper_percentile": 99.0,
+      "clip_low": 1.711891095326754e-15,
+      "clip_high": 0.017295376411075914,
+      "log1p": true,
+      "missing_filled_with": 0.0
+    }
+  },
+  "missing_active_frequency": "filled with zero"
+}

@@ -1,0 +1,19 @@
+timestamp=20260629_113841
+disk before unzip
+文件系统        容量  已用  可用 已用% 挂载点
+/dev/sda1       3.6T  3.1T  343G   91% /disk1
+unzip version
+UnZip 6.00 of 20 April 2009, by Debian. Original by Info-ZIP.
+
+[unzip] data-20260629T025116Z-3-001.zip
+[unzip] data-20260629T025116Z-3-002.zip
+[unzip] outputs-20260629T025116Z-3-001.zip
+disk after unzip
+文件系统        容量  已用  可用 已用% 挂载点
+/dev/sda1       3.6T  3.1T  338G   91% /disk1
+data outputs size
+0	data
+0	outputs
+links
+lrwxrwxrwx 1 zlab zlab 44 6月  29 11:39 data -> /disk1/zlab/datasets/safer_splat_gdrive/data
+lrwxrwxrwx 1 zlab zlab 47 6月  29 11:39 outputs -> /disk1/zlab/datasets/safer_splat_gdrive/outputs

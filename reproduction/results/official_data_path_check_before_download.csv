@@ -1,0 +1,11 @@
+path,exists,kind,file_count_limited,size_bytes
+data,False,missing,0,
+outputs,False,missing,0,
+data/flight,False,missing,0,
+data/flight/images,False,missing,0,
+data/flight/transforms.json,False,missing,0,
+outputs/flight/splatfacto/2024-09-12_172434/config.yml,False,missing,0,
+outputs/flight/splatfacto/2024-09-12_172434/nerfstudio_models,False,missing,0,
+outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml,False,missing,0,
+outputs/statues/splatfacto/2024-09-11_095852/config.yml,False,missing,0,
+outputs/old_union2/splatfacto/2024-09-02_151414/config.yml,False,missing,0,

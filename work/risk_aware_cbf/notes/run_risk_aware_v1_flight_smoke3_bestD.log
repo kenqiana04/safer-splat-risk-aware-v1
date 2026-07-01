@@ -1,0 +1,33 @@
+[2026-07-01T11:03:33] script=/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_risk_aware_v1_pre_cbf_comparison.py
+[2026-07-01T11:03:33] scene=flight methods=['no_filter', 'safer_splat_filter', 'risk_aware_v1_pre_cbf'] trials=0-2
+[2026-07-01T11:03:33] risk_aware_v1_pre_cbf=candidate_budget=2000 near_distance_threshold=0.05 heading_distance_threshold=0.25 heading_cos_threshold=0.5 risk_score=risk_v2_hybrid
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/flight/splatfacto/2024-09-12_172434/nerfstudio_models/step-000029999.ckpt
+There are 281756 Gaussians in the GSplat model
+[2026-07-01T11:03:41] loaded_risk_score_table=work/risk_aware_cbf/results/flight_risk_score_table_v0.csv
+[2026-07-01T11:03:41] start method=no_filter trial=0
+[2026-07-01T11:03:45] done method=no_filter trial=0 stop=stopped_before_goal collision=True steps=247 min_h=-0.0009112062980420887
+[2026-07-01T11:03:46] start method=no_filter trial=1
+[2026-07-01T11:03:51] done method=no_filter trial=1 stop=stopped_before_goal collision=True steps=247 min_h=-0.0009000907302834094
+[2026-07-01T11:03:51] start method=no_filter trial=2
+[2026-07-01T11:03:56] done method=no_filter trial=2 stop=stopped_before_goal collision=True steps=245 min_h=-0.0008999554556794465
+[2026-07-01T11:03:56] start method=safer_splat_filter trial=0
+ball-to-ellipsoid
+[2026-07-01T11:04:10] done method=safer_splat_filter trial=0 stop=stopped_before_goal collision=False steps=93 min_h=0.0006012368248775601
+[2026-07-01T11:04:10] start method=safer_splat_filter trial=1
+ball-to-ellipsoid
+[2026-07-01T11:04:22] done method=safer_splat_filter trial=1 stop=stopped_before_goal collision=False steps=88 min_h=0.0012490706285461783
+[2026-07-01T11:04:23] start method=safer_splat_filter trial=2
+ball-to-ellipsoid
+[2026-07-01T11:04:37] done method=safer_splat_filter trial=2 stop=stopped_before_goal collision=False steps=99 min_h=0.0007776990532875061
+[2026-07-01T11:04:38] start method=risk_aware_v1_pre_cbf trial=0
+ball-to-ellipsoid
+[2026-07-01T11:04:46] done method=risk_aware_v1_pre_cbf trial=0 stop=stopped_before_goal collision=False steps=93 min_h=0.0006012296071276069
+[2026-07-01T11:04:47] start method=risk_aware_v1_pre_cbf trial=1
+ball-to-ellipsoid
+[2026-07-01T11:04:53] done method=risk_aware_v1_pre_cbf trial=1 stop=stopped_before_goal collision=False steps=85 min_h=0.0011820945655927062
+[2026-07-01T11:04:54] start method=risk_aware_v1_pre_cbf trial=2
+ball-to-ellipsoid
+[2026-07-01T11:05:02] done method=risk_aware_v1_pre_cbf trial=2 stop=stopped_before_goal collision=False steps=98 min_h=0.0007648356258869171
+[2026-07-01T11:05:04] final_summary=[{"scene": "flight", "method": "no_filter", "rows": 3, "success_count": 0, "collision_count": 3, "collision_free_count": 0, "stopped_before_goal_count": 3, "solver_failed_count": 0, "min_safety_h_min": -0.0009112062980420887, "min_safety_h_mean": -0.0009037508280016482, "goal_distance_reduction_ratio_mean": 0.9876087051902873, "final_goal_distance_mean": 0.006821681249988152, "closest_goal_distance_mean": 0.0003936182240456825, "num_steps_mean": 246.33333333333334, "runtime_mean_mean": 2.2915635614903507e-05, "runtime_p95_mean": 3.267539044221242e-05, "intervention_rate_mean": 0.0, "control_deviation_mean_mean": 0.0, "active_constraints_mean_mean": 0.0, "qp_infeasible_count_sum": 0}, {"scene": "flight", "method": "risk_aware_v1_pre_cbf", "rows": 3, "success_count": 0, "collision_count": 0, "collision_free_count": 3, "stopped_before_goal_count": 3, "solver_failed_count": 0, "min_safety_h_min": 0.0006012296071276069, "min_safety_h_mean": 0.0008493865995357434, "goal_distance_reduction_ratio_mean": 0.27414859340118425, "final_goal_distance_mean": 0.3995219551161267, "closest_goal_distance_mean": 0.3995219551161267, "num_steps_mean": 92.0, "runtime_mean_mean": 0.0626031093423655, "runtime_p95_mean": 0.06890268266821901, "intervention_rate_mean": 0.6829604960263675, "control_deviation_mean_mean": 0.03851247481381959, "active_constraints_mean_mean": 152.11259084278873, "qp_infeasible_count_sum": 0}, {"scene": "flight", "method": "safer_splat_filter", "rows": 3, "success_count": 0, "collision_count": 0, "collision_free_count": 3, "stopped_before_goal_count": 3, "solver_failed_count": 0, "min_safety_h_min": 0.0006012368248775601, "min_safety_h_mean": 0.0008760021689037482, "goal_distance_reduction_ratio_mean": 0.2731245623757923, "final_goal_distance_mean": 0.40008653693148144, "closest_goal_distance_mean": 0.40008653693148144, "num_steps_mean": 93.33333333333333, "runtime_mean_mean": 0.11990431313324758, "runtime_p95_mean": 0.1318977667329212, "intervention_rate_mean": 0.7494026284348866, "control_deviation_mean_mean": 0.040497520931926774, "active_constraints_mean_mean": 180.72590148799827, "qp_infeasible_count_sum": 0}]
+[2026-07-01T11:05:04] wrote=work/risk_aware_cbf/results/risk_aware_v1_pre_cbf_flight_smoke3_bestD

@@ -1,0 +1,27 @@
+{
+  "scene_setup": {
+    "scene": "flight",
+    "checkpoint": "outputs/flight/splatfacto/2024-09-12_172434/config.yml",
+    "data": "data/flight/transforms.json",
+    "gaussian_count": 281756,
+    "risk_score_available": true,
+    "active_frequency_available": false,
+    "active_frequency_note": "filled with zero",
+    "risk_score_table": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/flight_risk_score_table_v0.csv"
+  },
+  "checks": {
+    "safety_preserved": true,
+    "progress_preserved": true,
+    "runtime_improved": true,
+    "default_safe": true,
+    "bestD_safe": true,
+    "default_progress_preserved": true,
+    "bestD_progress_preserved": true,
+    "default_runtime_improved": true,
+    "bestD_runtime_improved": true,
+    "preferred_config": "risk_aware_v1_bestD",
+    "preferred_reason": "bestD is faster and uses fewer active constraints on flight 20-trial.",
+    "recommended_decision": "PROCEED_TO_FLIGHT_100",
+    "decision_reason": "Both V1 configurations preserve flight safety/progress and reduce runtime versus SAFER-Splat on 20 trials."
+  }
+}

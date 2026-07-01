@@ -1,0 +1,19 @@
+{
+  "safety_preserved": true,
+  "progress_preserved": true,
+  "progress_improved": false,
+  "active_constraints_reduced": true,
+  "runtime_improved": true,
+  "qp_stability_preserved": true,
+  "fallback_low": true,
+  "active_constraints_lower_than_default_v1": true,
+  "runtime_lower_than_default_v1": false,
+  "recommended_decision": "PROCEED_TO_SECOND_SCENE",
+  "decision_reason": "bestD preserves safety and progress while reducing runtime versus the SAFER-Splat baseline.",
+  "baseline_progress_mean": 0.324696751118169,
+  "bestD_progress_mean": 0.324674583250177,
+  "default_v1_runtime_mean": 0.0398735679220789,
+  "bestD_runtime_mean": 0.0404428432572317,
+  "default_v1_active_constraints_mean": 385.5619684292822,
+  "bestD_active_constraints_mean": 252.22198929007453
+}

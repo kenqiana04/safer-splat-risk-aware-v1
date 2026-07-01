@@ -1,0 +1,2 @@
+success,collision,minimum_clearance,path_length,runtime_mean,runtime_p95,intervention_rate,control_deviation_mean,control_deviation_max,active_constraints_mean,active_constraints_p95,qp_infeasible_count,num_steps
+True,False,0.02475292980670929,0.601032039677821,0.000524874391226933,0.0006099700927734374,0.5517241379310345,0.050513701346008064,0.12639239797922006,23.358620689655172,36.0,0,145

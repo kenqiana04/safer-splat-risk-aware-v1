@@ -1,0 +1,19 @@
+/disk1/zlab/projects/safer-splat/ns_utils/nerfstudio_utils.py:117: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  assert(self.pipeline.model, SplatfactoModel)
+[2026-06-29T17:42:59] script=/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py
+[2026-06-29T17:42:59] scene=stonehenge methods=['safer_splat_filter'] trials=0-2
+[2026-06-29T17:42:59] active_constraints_logging=partial_lowest_h_selected limit=50
+Skipping 0 files in dataset split train.
+Skipping 0 files in dataset split test.
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/stonehenge/splatfacto/2024-09-11_100724/nerfstudio_models/step-000029999.ckpt
+There are 116446 Gaussians in the GSplat model
+[2026-06-29T17:43:03] skip_existing method=safer_splat_filter trial=0
+[2026-06-29T17:43:03] start method=safer_splat_filter trial=1
+ball-to-ellipsoid
+[2026-06-29T17:43:12] done method=safer_splat_filter trial=1 stop=stopped_before_goal collision=False steps=114 min_h=0.0008069269824773073
+[2026-06-29T17:43:12] start method=safer_splat_filter trial=2
+ball-to-ellipsoid
+[2026-06-29T17:43:21] done method=safer_splat_filter trial=2 stop=stopped_before_goal collision=False steps=104 min_h=0.001313697430305183
+[2026-06-29T17:43:21] final_summary=[{"scene": "stonehenge", "method": "safer_splat_filter", "rows": 3, "success_count": 0, "collision_count": 0, "collision_free_count": 3, "stopped_before_goal_count": 3, "solver_failed_count": 0, "min_safety_h_min": 0.0008069269824773073, "min_safety_h_mean": 0.0009905836001659434, "goal_distance_reduction_ratio_mean": 0.4018082982258126, "final_goal_distance_mean": 0.4690688264632958, "closest_goal_distance_mean": 0.4690688264632958, "num_steps_mean": 181.0, "runtime_mean_mean": 0.05884126803794146, "runtime_p95_mean": 0.06789940701176723, "intervention_rate_mean": 0.9591520467836258, "control_deviation_mean_mean": 0.05253575512589793, "active_constraints_mean_mean": 416.41058929374714, "qp_infeasible_count_sum": 0}]
+[2026-06-29T17:43:21] wrote=work/risk_aware_cbf/results/baseline_detailed_logging_stonehenge_smoke3

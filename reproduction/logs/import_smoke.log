@@ -1,0 +1,7 @@
+python: /disk1/zlab/conda_envs/safer_splat/bin/python
+[OK] torch 2.1.2+cu118
+[OK] numpy 1.26.4
+[OK] scipy 1.15.3
+[OK] cvxpy 1.7.5
+[OK] clarabel 0.10.0
+[OK] osqp 1.1.3

@@ -1,0 +1,11 @@
+Retrieving folder contents
+Error:
+
+	HTTPSConnectionPool(host='drive.google.com', port=443): Max retries
+	exceeded with url:
+	/embeddedfolderview?id=1xSu7bFW8OBRd9YHfz3LzdBx7pDjUHEPh (Caused by
+	NewConnectionError("HTTPSConnection(host='drive.google.com',
+	port=443): Failed to establish a new connection: [Errno 101] Network
+	is unreachable"))
+
+To report issues, please visit https://github.com/wkentaro/gdown/issues.

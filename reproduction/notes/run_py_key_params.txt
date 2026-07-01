@@ -1,0 +1,72 @@
+10:from splat.gsplat_utils import GSplatLoader
+11:from cbf.cbf_utils import CBF
+16:# Parameters for the CBF and dynamics
+17:alpha = 5.
+18:beta = 1.
+19:dt = 0.05
+23:n_steps = 500   # number of time steps
+29:### ----------------- Possible Distance Types ----------------- ###
+35:### ----------------- Possible Distance Types ----------------- ###
+37:for scene_name in ['stonehenge']:
+40:        if scene_name == 'old_union':
+41:            radius_z = 0.01     # How far to undulate up and down
+42:            radius = 0.01       # radius of robot
+43:            radius_config = 1.35/2  # radius of xy circle
+45:            path_to_gsplat = Path('outputs/old_union2/splatfacto/2024-09-02_151414/config.yml') # points to where the gsplat params are stored
+47:        elif scene_name == 'stonehenge':
+48:            radius_z = 0.01
+49:            radius = 0.015
+50:            radius_config = 0.784/2
+52:            path_to_gsplat = Path('outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml')
+54:        elif scene_name == 'statues':
+55:            radius_z = 0.03    
+56:            radius = 0.03
+57:            radius_config = 0.475
+59:            path_to_gsplat = Path('outputs/statues/splatfacto/2024-09-11_095852/config.yml')
+61:        elif scene_name == 'flight':
+62:            radius_z = 0.06
+63:            radius = 0.03
+64:            radius_config = 0.545/2
+66:            path_to_gsplat = Path('outputs/flight/splatfacto/2024-09-12_172434/config.yml')
+68:        elif scene_name == 'flight-low-res':
+69:            radius_z = 0.06
+70:            radius = 0.03
+71:            radius_config = 0.545/2
+73:            path_to_gsplat = 'flightroom_gaussians_sparse_deep.json'
+74:            path_to_gsplat_high_res = Path('outputs/flight/splatfacto/2024-09-12_172434/config.yml')
+79:        gsplat = GSplatLoader(path_to_gsplat, device)
+80:        print('Time to load GSplat:', time.time() - tnow)
+82:        # Load high res gsplat for flight-low-res for comparison
+83:        if scene_name == 'flight-low-res':
+84:            gsplat_high_res = GSplatLoader(path_to_gsplat_high_res, device)
+89:        x0 = np.stack([radius_config*np.cos(t), radius_config*np.sin(t), radius_z * np.sin(t_z)], axis=-1)     # starting positions
+92:        xf = np.stack([radius_config*np.cos(t + np.pi), radius_config*np.sin(t + np.pi), radius_z * np.sin(t_z + np.pi)], axis=-1)     # goal positions
+98:        for trial, (start, goal) in enumerate(zip(x0, xf)):
+101:            x = torch.tensor(start).to(device).to(torch.float32)
+103:            goal = torch.tensor(goal).to(device).to(torch.float32)
+104:            goal = torch.cat([goal, torch.zeros(3).to(device).to(torch.float32)])
+115:            cbf = CBF(gsplat, dynamics, alpha, beta, radius, distance_type=method)
+116:            for i in tqdm(range(n_steps), desc=f"Simulating trajectory {trial}"):
+118:                # Simple PD controller to track to goal
+119:                vel_des = 5.0*(goal[:3] - x[:3])
+123:                vel_des = vel_des + 1.0*(goal[3:] - x[3:])
+138:                # We end the trajectory if the solver fails (because we short-circuit the control input if it fails)
+147:                x = double_integrator_dynamics(x,u)*dt + x
+150:                times.append((i+1) * dt)
+155:                if scene_name == 'flight-low-res':
+157:                    h, grad_h, hess_h, info = gsplat_high_res.query_distance(x, radius=radius, distance_type='ball-to-ellipsoid')
+159:                    h, grad_h, hess_h, info = gsplat.query_distance(x, radius=radius, distance_type='ball-to-ellipsoid')
+165:                    # If it's at the goal
+166:                    if torch.norm(x_ - goal) < 0.001:
+168:                        sucess.append(True)
+169:                        feasible.append(True)
+172:                        feasible.append(True)
+176:                if i >= n_steps - 1:
+177:                    sucess.append(True)
+178:                    feasible.append(True)
+200:        # Save trajectory
+204:            'alpha': alpha,
+205:            'beta': beta,
+206:            'radius': radius,
+207:            'dt': dt,
+212:        os.makedirs('trajs', exist_ok=True)

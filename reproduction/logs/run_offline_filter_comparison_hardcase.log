@@ -1,0 +1,102 @@
+Scanning deterministic candidate trials for no-filter low-clearance/collision cases...
+trial=55 collision=False min_clearance=0.03584640473127365 success=True
+trial=46 collision=False min_clearance=0.02613171935081482 success=True
+trial=53 collision=False min_clearance=0.01270182803273201 success=True
+trial=2 collision=False min_clearance=0.008666815236210823 success=True
+trial=3 collision=False min_clearance=0.027510881423950195 success=True
+trial=6 collision=False min_clearance=0.03866139054298401 success=True
+trial=8 collision=False min_clearance=0.017845265567302704 success=True
+trial=9 collision=True min_clearance=-0.0051793502643704414 success=False
+ball-to-ellipsoid
+{
+  "hardcase_found": true,
+  "selection_reason": "no_filter_collision",
+  "selected_trial": 9,
+  "scan_candidate_trials": [
+    55,
+    46,
+    53,
+    2,
+    3,
+    6,
+    8,
+    9,
+    10,
+    12,
+    15,
+    33,
+    35,
+    39,
+    42,
+    44,
+    45,
+    47,
+    49,
+    50,
+    51,
+    54,
+    56,
+    58,
+    59,
+    62,
+    64,
+    65,
+    66,
+    83,
+    84,
+    86,
+    87,
+    95,
+    96,
+    97,
+    98
+  ],
+  "metrics": {
+    "no_filter": {
+      "method": "no_filter",
+      "trial": 9,
+      "success": false,
+      "collision": true,
+      "minimum_clearance": -0.0051793502643704414,
+      "path_length": 0.23206933795873907,
+      "num_steps": 41,
+      "runtime_mean": 0.0,
+      "runtime_p95": 0.0,
+      "intervention_rate": 0.0,
+      "control_deviation_mean": 0.0,
+      "control_deviation_max": 0.0,
+      "active_constraints_mean": 0.0,
+      "active_constraints_p95": 0.0,
+      "qp_infeasible_count": 0,
+      "wall_time_s": 0.6460603093728423,
+      "gaussian_snapshot": "/disk1/zlab/projects/splatnav/reproduction/flight_gsplat_tensors.pt",
+      "gaussian_pool_size": 2500,
+      "max_active_before_cbf_pruning": 96,
+      "start_goal_source": "/disk1/zlab/projects/splatnav/trajs/flight_splatplan_official100.json:trial9 start/goal only",
+      "distance_note": "same real GSplat ellipsoid clearance evaluator for no_filter and safer_splat_filter"
+    },
+    "safer_splat_filter": {
+      "method": "safer_splat_filter",
+      "trial": 9,
+      "success": true,
+      "collision": false,
+      "minimum_clearance": 0.043391887098550797,
+      "path_length": 0.6275636857467566,
+      "num_steps": 134,
+      "runtime_mean": 0.016984800947135063,
+      "runtime_p95": 0.017723818589001895,
+      "intervention_rate": 0.44029850746268656,
+      "control_deviation_mean": 0.052613016222617805,
+      "control_deviation_max": 0.17359948860633942,
+      "active_constraints_mean": 23.074626865671643,
+      "active_constraints_p95": 32.349999999999994,
+      "qp_infeasible_count": 0,
+      "wall_time_s": 4.3768295859918,
+      "gaussian_snapshot": "/disk1/zlab/projects/splatnav/reproduction/flight_gsplat_tensors.pt",
+      "gaussian_pool_size": 2500,
+      "max_active_before_cbf_pruning": 96,
+      "start_goal_source": "/disk1/zlab/projects/splatnav/trajs/flight_splatplan_official100.json:trial9 start/goal only",
+      "distance_note": "same real GSplat ellipsoid clearance evaluator for no_filter and safer_splat_filter"
+    }
+  }
+}

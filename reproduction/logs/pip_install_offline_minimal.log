@@ -1,0 +1,178 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Requirement already satisfied: pip in /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages (26.1.2)
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple, https://download.pytorch.org/whl/cu118
+Collecting torch==2.1.2+cu118
+  Downloading torch-2.1.2%2Bcu118-cp310-cp310-linux_x86_64.whl (2325.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 GB 2.3 MB/s  0:08:21
+Collecting torchvision==0.16.2+cu118
+  Downloading torchvision-0.16.2%2Bcu118-cp310-cp310-linux_x86_64.whl (6.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 3.4 MB/s  0:00:02
+Collecting filelock (from torch==2.1.2+cu118)
+  Downloading filelock-3.29.4-py3-none-any.whl (42 kB)
+Collecting typing-extensions (from torch==2.1.2+cu118)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting sympy (from torch==2.1.2+cu118)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx (from torch==2.1.2+cu118)
+  Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+Collecting jinja2 (from torch==2.1.2+cu118)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec (from torch==2.1.2+cu118)
+  Downloading fsspec-2026.6.0-py3-none-any.whl (203 kB)
+Collecting triton==2.1.0 (from torch==2.1.2+cu118)
+  Downloading triton-2.1.0-0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (89.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 89.2/89.2 MB 2.4 MB/s  0:00:37
+Collecting numpy (from torchvision==0.16.2+cu118)
+  Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+Collecting requests (from torchvision==0.16.2+cu118)
+  Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision==0.16.2+cu118)
+  Downloading pillow-12.2.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch==2.1.2+cu118)
+  Downloading markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting charset_normalizer<4,>=2 (from requests->torchvision==0.16.2+cu118)
+  Downloading charset_normalizer-3.4.7-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (216 kB)
+Collecting idna<4,>=2.5 (from requests->torchvision==0.16.2+cu118)
+  Using cached idna-3.18-py3-none-any.whl (65 kB)
+Collecting urllib3<3,>=1.26 (from requests->torchvision==0.16.2+cu118)
+  Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+Collecting certifi>=2023.5.7 (from requests->torchvision==0.16.2+cu118)
+  Using cached certifi-2026.6.17-py3-none-any.whl (133 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy->torch==2.1.2+cu118)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Downloading pillow-12.2.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.1/7.1 MB 185.4 kB/s  0:00:32
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (20 kB)
+Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 207.3 kB/s  0:00:08
+Downloading numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.8/16.8 MB 163.3 kB/s  0:01:52
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 229.2 kB/s  0:00:27
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 251.9 kB/s  0:00:02
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Installing collected packages: mpmath, urllib3, typing-extensions, sympy, pillow, numpy, networkx, MarkupSafe, idna, fsspec, filelock, charset_normalizer, certifi, triton, requests, jinja2, torch, torchvision
+
+Successfully installed MarkupSafe-3.0.3 certifi-2026.6.17 charset_normalizer-3.4.7 filelock-3.29.4 fsspec-2026.6.0 idna-3.18 jinja2-3.1.6 mpmath-1.3.0 networkx-3.4.2 numpy-2.2.6 pillow-12.2.0 requests-2.34.2 sympy-1.14.0 torch-2.1.2+cu118 torchvision-0.16.2+cu118 triton-2.1.0 typing-extensions-4.15.0 urllib3-2.7.0
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting scipy
+  Downloading scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (37.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 37.7/37.7 MB 19.6 MB/s  0:00:01
+Collecting matplotlib
+  Downloading matplotlib-3.10.9-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (8.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.8/8.8 MB 23.4 MB/s  0:00:00
+Collecting pandas
+  Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 18.7 MB/s  0:00:00
+Collecting numpy==1.26.4 (from -r requirements.txt (line 1))
+  Downloading numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 11.1 MB/s  0:00:01
+Collecting clarabel==0.10.0 (from -r requirements.txt (line 2))
+  Downloading clarabel-0.10.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 13.4 MB/s  0:00:00
+Collecting viser==0.2.23 (from -r requirements.txt (line 3))
+  Downloading viser-0.2.23-py3-none-any.whl (28.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 28.9/28.9 MB 8.1 MB/s  0:00:03
+Collecting imageio>=2.0.0 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading imageio-2.37.3-py3-none-any.whl (317 kB)
+Collecting msgspec>=0.18.6 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading msgspec-0.21.1-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (222 kB)
+Collecting nodeenv>=1.8.0 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading nodeenv-1.10.0-py2.py3-none-any.whl (23 kB)
+Collecting plyfile>=1.0.2 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading plyfile-1.1.4-py3-none-any.whl (36 kB)
+Collecting psutil>=5.9.5 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+Collecting rich>=13.3.3 (from viser==0.2.23->-r requirements.txt (line 3))
+  Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+Collecting scikit-image>=0.18.0 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading scikit_image-0.25.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (14.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.8/14.8 MB 426.4 kB/s  0:00:35
+Collecting tqdm>=4.0.0 (from viser==0.2.23->-r requirements.txt (line 3))
+  Using cached tqdm-4.68.3-py3-none-any.whl (78 kB)
+Collecting trimesh>=3.21.7 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading trimesh-4.12.2-py3-none-any.whl (741 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 741.0/741.0 kB 523.5 kB/s  0:00:01
+Collecting tyro>=0.2.0 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading tyro-1.0.15-py3-none-any.whl (215 kB)
+Collecting websockets>=13.1 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading websockets-16.0-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (183 kB)
+Collecting yourdfpy>=0.0.53 (from viser==0.2.23->-r requirements.txt (line 3))
+  Downloading yourdfpy-0.0.60-py3-none-any.whl (22 kB)
+Collecting contourpy>=1.0.1 (from matplotlib)
+  Downloading contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (325 kB)
+Collecting cycler>=0.10 (from matplotlib)
+  Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Collecting fonttools>=4.22.0 (from matplotlib)
+  Downloading fonttools-4.63.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 405.2 kB/s  0:00:12
+Collecting kiwisolver>=1.3.1 (from matplotlib)
+  Downloading kiwisolver-1.5.0-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 429.4 kB/s  0:00:03
+Requirement already satisfied: packaging>=20.0 in /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages (from matplotlib) (26.0)
+Requirement already satisfied: pillow>=8 in /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages (from matplotlib) (12.2.0)
+Collecting pyparsing>=3 (from matplotlib)
+  Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Collecting python-dateutil>=2.7 (from matplotlib)
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting numpy==1.26.4
+  Downloading numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 5.5 MB/s  0:00:03
+Collecting scipy
+  Downloading scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (37.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 37.7/37.7 MB 6.1 MB/s  0:00:06
+Collecting clarabel==0.10.0
+  Downloading clarabel-0.10.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.0 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 3.8 MB/s  0:00:00
+Collecting matplotlib
+  Downloading matplotlib-3.10.9-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (8.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.8/8.8 MB 5.4 MB/s  0:00:01
+Collecting pandas
+  Downloading pandas-2.3.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 4.9 MB/s  0:00:02
+Collecting cvxpy
+  Downloading cvxpy-1.7.5-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 11.1 MB/s  0:00:00
+Collecting osqp
+  Downloading osqp-1.1.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (350 kB)
+Collecting tqdm
+  Downloading tqdm-4.68.3-py3-none-any.whl (78 kB)
+Collecting contourpy>=1.0.1 (from matplotlib)
+  Downloading contourpy-1.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (325 kB)
+Collecting cycler>=0.10 (from matplotlib)
+  Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Collecting fonttools>=4.22.0 (from matplotlib)
+  Downloading fonttools-4.63.0-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 1.4 MB/s  0:00:03
+Collecting kiwisolver>=1.3.1 (from matplotlib)
+  Downloading kiwisolver-1.5.0-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (1.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 1.4 MB/s  0:00:01
+Requirement already satisfied: packaging>=20.0 in /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages (from matplotlib) (26.0)
+Requirement already satisfied: pillow>=8 in /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages (from matplotlib) (12.2.0)
+Collecting pyparsing>=3 (from matplotlib)
+  Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Collecting python-dateutil>=2.7 (from matplotlib)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Collecting pytz>=2020.1 (from pandas)
+  Downloading pytz-2026.2-py2.py3-none-any.whl (510 kB)
+Collecting tzdata>=2022.7 (from pandas)
+  Downloading tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+Collecting scs>=3.2.4.post1 (from cvxpy)
+  Downloading scs-3.2.11-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (12.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.1/12.1 MB 487.0 kB/s  0:00:24
+Requirement already satisfied: jinja2 in /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages (from osqp) (3.1.6)
+Requirement already satisfied: setuptools in /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages (from osqp) (82.0.1)
+Collecting joblib (from osqp)
+  Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib)
+  Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Requirement already satisfied: MarkupSafe>=2.0 in /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages (from jinja2->osqp) (3.0.3)
+Installing collected packages: pytz, tzdata, tqdm, six, pyparsing, numpy, kiwisolver, joblib, fonttools, cycler, scipy, python-dateutil, contourpy, scs, pandas, osqp, matplotlib, clarabel, cvxpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.2.6
+    Uninstalling numpy-2.2.6:
+      Successfully uninstalled numpy-2.2.6
+
+Successfully installed clarabel-0.10.0 contourpy-1.3.2 cvxpy-1.7.5 cycler-0.12.1 fonttools-4.63.0 joblib-1.5.3 kiwisolver-1.5.0 matplotlib-3.10.9 numpy-1.26.4 osqp-1.1.3 pandas-2.3.3 pyparsing-3.3.2 python-dateutil-2.9.0.post0 pytz-2026.2 scipy-1.15.3 scs-3.2.11 six-1.17.0 tqdm-4.68.3 tzdata-2026.2

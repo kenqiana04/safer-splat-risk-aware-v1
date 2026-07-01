@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local datasets and trained model outputs are not stored in this clean repo.
+data/
+outputs/
+*.ckpt
+*.pt
+*.pth
+
+# Large generated diagnostics excluded from GitHub.
+work/risk_aware_cbf/results/**/active_constraints.csv
+work/risk_aware_cbf/results/**/per_step_trajectory.csv
+work/risk_aware_cbf/results/*gaussian_attributes.csv
+work/risk_aware_cbf/results/*risk_score_table_v0.csv
+work/risk_aware_cbf/results/active_gaussian_frequency.csv
+
+# Local editor/runtime noise.
+.vscode/
+.idea/
+*.log~

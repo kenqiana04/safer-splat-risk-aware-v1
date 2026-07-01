@@ -1,0 +1,13 @@
+phase=after_download
+output=/disk1/zlab/projects/safer-splat/reproduction/results/official_data_path_check_after_download.csv
+present=10/10
+True  symlink_dir->/disk1/zlab/datasets/safer_splat_gdrive/data data
+True  symlink_dir->/disk1/zlab/datasets/safer_splat_gdrive/outputs outputs
+True  dir                                 data/flight
+True  dir                                 data/flight/images
+True  file                                data/flight/transforms.json
+True  file                                outputs/flight/splatfacto/2024-09-12_172434/config.yml
+True  dir                                 outputs/flight/splatfacto/2024-09-12_172434/nerfstudio_models
+True  file                                outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml
+True  file                                outputs/statues/splatfacto/2024-09-11_095852/config.yml
+True  file                                outputs/old_union2/splatfacto/2024-09-02_151414/config.yml

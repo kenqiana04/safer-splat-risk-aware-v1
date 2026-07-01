@@ -1,0 +1,5 @@
+{
+  "table": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/risk_score_table_v0.csv",
+  "summary": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/results/risk_score_summary_v0.csv",
+  "figure": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/figures/risk_score_distribution_v0.png"
+}

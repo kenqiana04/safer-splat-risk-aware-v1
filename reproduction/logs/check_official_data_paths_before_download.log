@@ -1,0 +1,13 @@
+phase=before_download
+output=/disk1/zlab/projects/safer-splat/reproduction/results/official_data_path_check_before_download.csv
+present=0/10
+False missing                             data
+False missing                             outputs
+False missing                             data/flight
+False missing                             data/flight/images
+False missing                             data/flight/transforms.json
+False missing                             outputs/flight/splatfacto/2024-09-12_172434/config.yml
+False missing                             outputs/flight/splatfacto/2024-09-12_172434/nerfstudio_models
+False missing                             outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml
+False missing                             outputs/statues/splatfacto/2024-09-11_095852/config.yml
+False missing                             outputs/old_union2/splatfacto/2024-09-02_151414/config.yml

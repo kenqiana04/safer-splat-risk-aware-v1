@@ -1,0 +1,26 @@
+/disk1/zlab/projects/safer-splat/ns_utils/nerfstudio_utils.py:117: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  assert(self.pipeline.model, SplatfactoModel)
+[2026-06-29T12:54:24] script=/disk1/zlab/projects/safer-splat/reproduction/scripts/run_official_checkpoint_filter_comparison.py
+[2026-06-29T12:54:24] scene=stonehenge methods=['no_filter'] trials=0-0
+[2026-06-29T12:54:24] device=cuda torch=2.1.2+cu118 cuda_available=True
+[2026-06-29T12:54:24] max_steps=20 goal_tolerance=0.001
+[2026-06-29T12:54:24] min_safety_h_note=official GSplatLoader.query_distance safety h value; not meters
+[2026-06-29T12:54:24] checkpoint=outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml
+Skipping 0 files in dataset split train.
+Skipping 0 files in dataset split test.
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/stonehenge/splatfacto/2024-09-11_100724/nerfstudio_models/step-000029999.ckpt
+There are 116446 Gaussians in the GSplat model
+[2026-06-29T12:54:29] loaded_gsplat_seconds=4.610589 gaussian_count=116446
+[2026-06-29T12:54:29] start method=no_filter trial=0
+[2026-06-29T12:54:29] done method=no_filter trial=0 success=True collision=False min_safety_h=0.0011647003702819347 steps=20 stop=max_steps_loose_success
+/disk1/zlab/projects/safer-splat/reproduction/scripts/run_official_checkpoint_filter_comparison.py:731: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  ax_safety.boxplot(safety_data, labels=methods, showfliers=True)
+[2026-06-29T12:54:30] refreshed rows=1 summaries=1
+/disk1/zlab/projects/safer-splat/reproduction/scripts/run_official_checkpoint_filter_comparison.py:731: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  ax_safety.boxplot(safety_data, labels=methods, showfliers=True)
+[2026-06-29T12:54:31] final_summary=[{"scene": "stonehenge", "method": "no_filter", "rows": 1, "total_rows": 1, "success_count": 1, "feasible_count": 1, "collision_count": 0, "collision_free_count": 1, "error_count": 0, "stopped_before_goal_count": 0, "max_steps_loose_success_count": 1, "solver_failed_count": 0, "qp_infeasible_count_sum": 0, "min_safety_h_min": 0.0011647003702819347, "min_safety_h_mean": 0.0011647003702819347, "min_safety_h_median": 0.0011647003702819347, "initial_goal_distance_mean": 0.784, "final_goal_distance_mean": 0.7559605808258056, "closest_goal_distance_mean": 0.7559605808258056, "goal_distance_reduction_mean": 0.02803941917419439, "goal_distance_reduction_ratio_mean": 0.03576456527320713, "reached_goal_tolerance_count": 0, "path_length_mean": 0.02803942561149597, "num_steps_mean": 20.0, "runtime_mean_mean": 2.140984870493412e-05, "runtime_p95_mean": 2.5356980040669443e-05, "intervention_rate_mean": 0.0, "control_deviation_mean_mean": 0.0, "control_deviation_max_max": 0.0, "active_constraints_mean_mean": 0.0, "active_constraints_p95_mean": 0.0, "seconds_total_sum": 0.3388460502028465, "worst_trial": 0, "worst_min_safety_h": 0.0011647003702819347}]
+[2026-06-29T12:54:31] wrote=reproduction/results/official_checkpoint_filter_comparison_progress_smoke1/trials.csv
+[2026-06-29T12:54:31] wrote=reproduction/results/official_checkpoint_filter_comparison_progress_smoke1/summary.csv
+[2026-06-29T12:54:31] wrote=reproduction/results/official_checkpoint_filter_comparison_progress_smoke1/metrics.json
+[2026-06-29T12:54:31] wrote=reproduction/results/official_checkpoint_filter_comparison_progress_smoke1/comparison_plot.png

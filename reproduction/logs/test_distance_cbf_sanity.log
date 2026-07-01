@@ -1,0 +1,11 @@
+[PASS] far_positive: clearance=0.3299996852874756
+[PASS] touching_near_zero: clearance=-7.636845111846924e-08
+[PASS] inside_negative: clearance=-0.07000002264976501
+ball-to-ellipsoid
+The origin is not a feasible point. Resorting to solving Chebyshev center for an interior point.
+Failed to compute minimal polytope. Keeping all constraints.
+[PASS] moving_toward_filter_modifies: u_des=[-0.05773502588272095, -0.05773502588272095, -0.05773502588272095] u=[0.10290272533893585, 0.10290267318487167, 0.1029026210308075] delta=0.2782326638698578
+The origin is not a feasible point. Resorting to solving Chebyshev center for an interior point.
+Failed to compute minimal polytope. Keeping all constraints.
+[PASS] moving_away_minimal_intervention: u_des=[0.011547005735337734, 0.011547005735337734, 0.011547005735337734] u=[0.011547010391950607, 0.011547010391950607, 0.011547010391950607] delta=8.065490497699557e-09
+all sanity checks passed

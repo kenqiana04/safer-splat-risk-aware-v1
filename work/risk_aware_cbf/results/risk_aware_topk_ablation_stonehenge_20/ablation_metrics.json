@@ -1,0 +1,59 @@
+{
+  "created_at": "2026-06-30T12:32:18",
+  "configs": [
+    {
+      "ablation_id": "A_topk150_h0006_hybrid",
+      "topk": 150,
+      "h_critical": 0.0006,
+      "risk_score": "risk_v2_hybrid"
+    },
+    {
+      "ablation_id": "B_topk300_h0006_hybrid",
+      "topk": 300,
+      "h_critical": 0.0006,
+      "risk_score": "risk_v2_hybrid"
+    },
+    {
+      "ablation_id": "C_topk500_h0006_hybrid",
+      "topk": 500,
+      "h_critical": 0.0006,
+      "risk_score": "risk_v2_hybrid"
+    },
+    {
+      "ablation_id": "D_topk300_h0004_hybrid",
+      "topk": 300,
+      "h_critical": 0.0004,
+      "risk_score": "risk_v2_hybrid"
+    },
+    {
+      "ablation_id": "E_topk300_h0010_hybrid",
+      "topk": 300,
+      "h_critical": 0.001,
+      "risk_score": "risk_v2_hybrid"
+    },
+    {
+      "ablation_id": "F_topk300_h0006_activefreq",
+      "topk": 300,
+      "h_critical": 0.0006,
+      "risk_score": "risk_v0_active_frequency"
+    },
+    {
+      "ablation_id": "G_topk300_h0006_geometry",
+      "topk": 300,
+      "h_critical": 0.0006,
+      "risk_score": "risk_v1_geometry"
+    }
+  ],
+  "trial_start": 0,
+  "trial_end": 19,
+  "return_codes": {
+    "A_topk150_h0006_hybrid": 0,
+    "B_topk300_h0006_hybrid": 0,
+    "C_topk500_h0006_hybrid": 0,
+    "D_topk300_h0004_hybrid": 0,
+    "E_topk300_h0010_hybrid": 0,
+    "F_topk300_h0006_activefreq": 0,
+    "G_topk300_h0006_geometry": 0
+  },
+  "summary_csv": "work/risk_aware_cbf/results/risk_aware_topk_ablation_stonehenge_20/ablation_summary.csv"
+}

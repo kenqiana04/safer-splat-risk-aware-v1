@@ -1,0 +1,59 @@
+{
+  "target": "goal_distance_reduction_ratio",
+  "safer_rows": 100,
+  "low_progress_cutoff": 0.06173843046526352,
+  "high_progress_cutoff": 0.6244136152550487,
+  "strongest_abs_spearman": [
+    {
+      "method": "safer_splat_filter",
+      "feature": "num_steps",
+      "target": "goal_distance_reduction_ratio",
+      "n": 100,
+      "pearson": 0.9877838224471274,
+      "spearman": 0.9873673775518845,
+      "note": ""
+    },
+    {
+      "method": "safer_splat_filter",
+      "feature": "control_deviation_mean",
+      "target": "goal_distance_reduction_ratio",
+      "n": 100,
+      "pearson": -0.7813226773734677,
+      "spearman": -0.7760202581473635,
+      "note": ""
+    },
+    {
+      "method": "safer_splat_filter",
+      "feature": "runtime_mean",
+      "target": "goal_distance_reduction_ratio",
+      "n": 100,
+      "pearson": -0.41860642522245906,
+      "spearman": -0.5662423229618133,
+      "note": ""
+    },
+    {
+      "method": "safer_splat_filter",
+      "feature": "min_safety_h",
+      "target": "goal_distance_reduction_ratio",
+      "n": 100,
+      "pearson": -0.3373725501223465,
+      "spearman": -0.4581305618395549,
+      "note": ""
+    },
+    {
+      "method": "safer_splat_filter",
+      "feature": "intervention_rate",
+      "target": "goal_distance_reduction_ratio",
+      "n": 100,
+      "pearson": -0.5226073923802206,
+      "spearman": -0.42316507551691374,
+      "note": ""
+    }
+  ],
+  "gaussian_neighborhood_limitation": "Most trajectory rows do not have sampled trajectory points, so nearby Gaussian correlations are often insufficient.",
+  "outputs": [
+    "work/risk_aware_cbf/results/conservatism_correlation_table.csv",
+    "work/risk_aware_cbf/results/conservatism_group_comparison.csv",
+    "work/risk_aware_cbf/figures/conservatism_indicator_plots.png"
+  ]
+}

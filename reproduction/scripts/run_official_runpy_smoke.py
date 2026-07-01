@@ -1,0 +1,287 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import time
+from pathlib import Path
+import sys
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+import torch
+
+from splat.gsplat_utils import GSplatLoader
+from cbf.cbf_utils import CBF
+from dynamics.systems import DoubleIntegrator, double_integrator_dynamics
+
+SCENES = {
+    "old_union": {
+        "radius_z": 0.01,
+        "radius": 0.01,
+        "radius_config": 1.35 / 2,
+        "mean_config": np.array([0.14, 0.23, -0.15]),
+        "path_to_gsplat": Path("outputs/old_union2/splatfacto/2024-09-02_151414/config.yml"),
+    },
+    "stonehenge": {
+        "radius_z": 0.01,
+        "radius": 0.015,
+        "radius_config": 0.784 / 2,
+        "mean_config": np.array([-0.08, -0.03, 0.05]),
+        "path_to_gsplat": Path("outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml"),
+    },
+    "statues": {
+        "radius_z": 0.03,
+        "radius": 0.03,
+        "radius_config": 0.475,
+        "mean_config": np.array([-0.064, -0.0064, -0.025]),
+        "path_to_gsplat": Path("outputs/statues/splatfacto/2024-09-11_095852/config.yml"),
+    },
+    "flight": {
+        "radius_z": 0.06,
+        "radius": 0.03,
+        "radius_config": 0.545 / 2,
+        "mean_config": np.array([0.19, 0.01, -0.02]),
+        "path_to_gsplat": Path("outputs/flight/splatfacto/2024-09-12_172434/config.yml"),
+    },
+}
+
+
+class InstrumentedCBF(CBF):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.n_constraints = []
+        self.qp_infeasible_count = 0
+
+    def get_QP_matrices(self, *args, **kwargs):
+        A, l, P, q = super().get_QP_matrices(*args, **kwargs)
+        self.n_constraints.append(int(A.shape[0]))
+        return A, l, P, q
+
+    def solve_QP(self, x, u_des):
+        u = super().solve_QP(x, u_des)
+        if not self.solver_success:
+            self.qp_infeasible_count += 1
+        return u
+
+
+def percentile(values, q):
+    if not values:
+        return None
+    return float(np.percentile(np.asarray(values, dtype=float), q))
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Minimal official SAFER-Splat run.py smoke wrapper.")
+    parser.add_argument("--scene", choices=sorted(SCENES), default="stonehenge")
+    parser.add_argument("--trial", type=int, default=0)
+    parser.add_argument("--n-configs", type=int, default=100)
+    parser.add_argument("--n-steps", type=int, default=500)
+    parser.add_argument("--output-dir", type=Path, default=Path("reproduction/results/official_run_smoke"))
+    args = parser.parse_args()
+
+    alpha = 5.0
+    beta = 1.0
+    dt = 0.05
+    method = "ball-to-ellipsoid"
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+    cfg = SCENES[args.scene]
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+
+    t = np.linspace(0, 2 * np.pi, args.n_configs)
+    t_z = 10 * np.linspace(0, 2 * np.pi, args.n_configs)
+    x0 = np.stack(
+        [
+            cfg["radius_config"] * np.cos(t),
+            cfg["radius_config"] * np.sin(t),
+            cfg["radius_z"] * np.sin(t_z),
+        ],
+        axis=-1,
+    ) + cfg["mean_config"]
+    xf = np.stack(
+        [
+            cfg["radius_config"] * np.cos(t + np.pi),
+            cfg["radius_config"] * np.sin(t + np.pi),
+            cfg["radius_z"] * np.sin(t_z + np.pi),
+        ],
+        axis=-1,
+    ) + cfg["mean_config"]
+
+    if args.trial < 0 or args.trial >= len(x0):
+        raise ValueError(f"trial must be in [0, {len(x0) - 1}]")
+
+    print(f"scene={args.scene}")
+    print(f"trial={args.trial}")
+    print(f"device={device}")
+    print(f"checkpoint={cfg['path_to_gsplat']}")
+
+    load_start = time.perf_counter()
+    gsplat = GSplatLoader(cfg["path_to_gsplat"], device)
+    load_seconds = time.perf_counter() - load_start
+    print(f"load_seconds={load_seconds:.6f}")
+
+    dynamics = DoubleIntegrator(device=device, ndim=3)
+    start = x0[args.trial]
+    goal_pos = xf[args.trial]
+    x = torch.tensor(start, device=device, dtype=torch.float32)
+    x = torch.cat([x, torch.zeros(3, device=device, dtype=torch.float32)])
+    goal = torch.tensor(goal_pos, device=device, dtype=torch.float32)
+    goal = torch.cat([goal, torch.zeros(3, device=device, dtype=torch.float32)])
+
+    cbf = InstrumentedCBF(gsplat, dynamics, alpha, beta, cfg["radius"], distance_type=method)
+
+    rows = []
+    traj = [x.detach().cpu().numpy()]
+    controls = []
+    controls_des = []
+    safety = []
+    step_times = []
+    success = False
+    feasible = True
+    stop_reason = "max_steps"
+
+    for i in range(args.n_steps):
+        x_prev = x.clone()
+        vel_des = 5.0 * (goal[:3] - x[:3])
+        vel_des = torch.clamp(vel_des, -0.1, 0.1)
+        vel_des = vel_des + 1.0 * (goal[3:] - x[3:])
+        u_des = 1.0 * (vel_des - x[3:])
+        u_des = torch.clamp(u_des, -0.1, 0.1)
+
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
+        step_start = time.perf_counter()
+        u = cbf.solve_QP(x, u_des)
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
+        step_time = time.perf_counter() - step_start
+        step_times.append(step_time)
+
+        if not cbf.solver_success:
+            success = False
+            feasible = False
+            stop_reason = "solver_failed"
+            print("solver_failed")
+            break
+
+        x = double_integrator_dynamics(x, u) * dt + x
+        h, _, _, _ = gsplat.query_distance(x, radius=cfg["radius"], distance_type=method)
+        min_h = float(torch.min(h).detach().cpu().item())
+        safety.append(min_h)
+
+        x_cpu = x.detach().cpu().numpy()
+        u_cpu = u.detach().cpu().numpy()
+        u_des_cpu = u_des.detach().cpu().numpy()
+        controls.append(u_cpu)
+        controls_des.append(u_des_cpu)
+        traj.append(x_cpu)
+        rows.append({
+            "step": i + 1,
+            "time_s": (i + 1) * dt,
+            "x": x_cpu[0],
+            "y": x_cpu[1],
+            "z": x_cpu[2],
+            "vx": x_cpu[3],
+            "vy": x_cpu[4],
+            "vz": x_cpu[5],
+            "ux": u_cpu[0],
+            "uy": u_cpu[1],
+            "uz": u_cpu[2],
+            "u_des_x": u_des_cpu[0],
+            "u_des_y": u_des_cpu[1],
+            "u_des_z": u_des_cpu[2],
+            "safety_h": min_h,
+            "step_runtime_s": step_time,
+            "active_constraints": cbf.n_constraints[-1] if cbf.n_constraints else None,
+        })
+
+        if torch.norm(x - x_prev) < 0.001:
+            success = bool(torch.norm(x_prev - goal) < 0.001)
+            feasible = True
+            stop_reason = "reached_goal" if success else "stopped_before_goal"
+            break
+    else:
+        success = True
+        feasible = True
+        stop_reason = "max_steps_loose_success"
+
+    traj_np = np.stack(traj)
+    controls_np = np.asarray(controls, dtype=float) if controls else np.zeros((0, 3))
+    controls_des_np = np.asarray(controls_des, dtype=float) if controls_des else np.zeros((0, 3))
+    deviations = np.linalg.norm(controls_np - controls_des_np, axis=1) if len(controls_np) else np.array([])
+    path_length = float(np.sum(np.linalg.norm(np.diff(traj_np[:, :3], axis=0), axis=1))) if len(traj_np) > 1 else 0.0
+
+    metrics = {
+        "scene": args.scene,
+        "trial": args.trial,
+        "checkpoint": str(cfg["path_to_gsplat"]),
+        "success": bool(success),
+        "feasible": bool(feasible),
+        "collision": bool(min(safety) < 0.0) if safety else None,
+        "minimum_clearance": float(min(safety)) if safety else None,
+        "minimum_clearance_note": "This is the official run.py safety h value from GSplatLoader.query_distance, not a postprocessed metric in meters.",
+        "path_length": path_length,
+        "num_steps": len(rows),
+        "runtime_mean": float(np.mean(step_times)) if step_times else None,
+        "runtime_p95": percentile(step_times, 95),
+        "intervention_rate": float(np.mean(deviations > 1e-5)) if deviations.size else None,
+        "control_deviation_mean": float(np.mean(deviations)) if deviations.size else None,
+        "control_deviation_max": float(np.max(deviations)) if deviations.size else None,
+        "active_constraints_mean": float(np.mean(cbf.n_constraints)) if cbf.n_constraints else None,
+        "active_constraints_p95": percentile(cbf.n_constraints, 95),
+        "qp_infeasible_count": int(cbf.qp_infeasible_count),
+        "load_seconds": load_seconds,
+        "gaussian_count": int(gsplat.means.shape[0]),
+        "stop_reason": stop_reason,
+        "n_steps_requested": args.n_steps,
+        "radius": cfg["radius"],
+        "dt": dt,
+        "method": method,
+    }
+
+    traj_csv = args.output_dir / "official_smoke_trajectory.csv"
+    with traj_csv.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()) if rows else ["step"])
+        writer.writeheader()
+        writer.writerows(rows)
+
+    summary_csv = args.output_dir / "official_smoke_summary.csv"
+    with summary_csv.open("w", newline="", encoding="utf-8") as f:
+        keys = list(metrics.keys())
+        writer = csv.DictWriter(f, fieldnames=keys)
+        writer.writeheader()
+        writer.writerow(metrics)
+
+    metrics_json = args.output_dir / "metrics.json"
+    metrics_json.write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+
+    fig = plt.figure(figsize=(7, 5))
+    ax = fig.add_subplot(111, projection="3d")
+    ax.plot(traj_np[:, 0], traj_np[:, 1], traj_np[:, 2], label="trajectory")
+    ax.scatter([start[0]], [start[1]], [start[2]], label="start")
+    ax.scatter([goal_pos[0]], [goal_pos[1]], [goal_pos[2]], label="goal")
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    ax.set_zlabel("z")
+    ax.legend()
+    fig.tight_layout()
+    fig.savefig(args.output_dir / "official_smoke_trajectory_plot.png", dpi=160)
+    plt.close(fig)
+
+    print(json.dumps(metrics, indent=2))
+    print(f"wrote={traj_csv}")
+    print(f"wrote={summary_csv}")
+    print(f"wrote={metrics_json}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

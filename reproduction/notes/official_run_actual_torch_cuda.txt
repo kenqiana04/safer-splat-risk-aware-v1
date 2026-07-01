@@ -1,0 +1,6 @@
+torch 2.1.2+cu118
+torch_cuda 11.8
+cuda_available True
+device_count 1
+device0 NVIDIA GeForce RTX 4090
+CUDA_VISIBLE_DEVICES 1

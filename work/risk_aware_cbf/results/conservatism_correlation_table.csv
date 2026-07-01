@@ -1,0 +1,16 @@
+method,feature,target,n,pearson,spearman,note
+safer_splat_filter,intervention_rate,goal_distance_reduction_ratio,100,-0.5226073923802206,-0.42316507551691374,
+safer_splat_filter,active_constraints_mean,goal_distance_reduction_ratio,100,-0.3276341946299355,-0.3266206217859092,
+safer_splat_filter,min_safety_h,goal_distance_reduction_ratio,100,-0.3373725501223465,-0.4581305618395549,
+safer_splat_filter,control_deviation_mean,goal_distance_reduction_ratio,100,-0.7813226773734677,-0.7760202581473635,
+safer_splat_filter,runtime_mean,goal_distance_reduction_ratio,100,-0.41860642522245906,-0.5662423229618133,
+safer_splat_filter,num_steps,goal_distance_reduction_ratio,100,0.9877838224471274,0.9873673775518845,
+safer_splat_filter,nearby_gaussian_count_r005,goal_distance_reduction_ratio,1,,,insufficient data
+safer_splat_filter,nearby_gaussian_count_r010,goal_distance_reduction_ratio,1,,,insufficient data
+safer_splat_filter,nearby_gaussian_count_r020,goal_distance_reduction_ratio,1,,,insufficient data
+safer_splat_filter,nearby_opacity_mean,goal_distance_reduction_ratio,1,,,insufficient data
+safer_splat_filter,nearby_max_scale_mean,goal_distance_reduction_ratio,1,,,insufficient data
+safer_splat_filter,nearby_anisotropy_mean,goal_distance_reduction_ratio,1,,,insufficient data
+safer_splat_filter,nearby_volume_proxy_mean,goal_distance_reduction_ratio,1,,,insufficient data
+safer_splat_filter,nearest_gaussian_distance_mean,goal_distance_reduction_ratio,1,,,insufficient data
+safer_splat_filter,nearest_gaussian_distance_min,goal_distance_reduction_ratio,1,,,insufficient data

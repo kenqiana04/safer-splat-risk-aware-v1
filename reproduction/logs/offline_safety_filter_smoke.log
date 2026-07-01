@@ -1,0 +1,23 @@
+ball-to-ellipsoid
+{
+  "success": true,
+  "collision": false,
+  "minimum_clearance": 0.02475292980670929,
+  "path_length": 0.601032039677821,
+  "runtime_mean": 0.000524874391226933,
+  "runtime_p95": 0.0006099700927734374,
+  "runtime_total_qp_s": 0.07610678672790527,
+  "wall_time_s": 4.880077360197902,
+  "intervention_rate": 0.5517241379310345,
+  "control_deviation_mean": 0.050513701346008064,
+  "control_deviation_max": 0.12639239797922006,
+  "active_constraints_mean": 23.358620689655172,
+  "active_constraints_p95": 36.0,
+  "qp_infeasible_count": 0,
+  "num_steps": 145,
+  "gaussian_snapshot": "/disk1/zlab/projects/splatnav/reproduction/flight_gsplat_tensors.pt",
+  "gaussian_pool_size": 2500,
+  "max_active_before_cbf_pruning": 96,
+  "start_goal_source": "/disk1/zlab/projects/splatnav/trajs/flight_splatplan_official100.json:trial53 start/goal only",
+  "distance_note": "signed clearance computed from official ball-to-ellipsoid squared-distance query; ellipsoid surfaces are real GSplat geometry from snapshot"
+}

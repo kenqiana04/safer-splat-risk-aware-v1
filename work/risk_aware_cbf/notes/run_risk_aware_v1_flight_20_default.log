@@ -1,0 +1,169 @@
+[2026-07-01T11:05:53] script=/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_risk_aware_v1_pre_cbf_comparison.py
+[2026-07-01T11:05:53] scene=flight methods=['no_filter', 'safer_splat_filter', 'risk_aware_v1_pre_cbf'] trials=0-19
+[2026-07-01T11:05:53] risk_aware_v1_pre_cbf=candidate_budget=2000 near_distance_threshold=0.08 heading_distance_threshold=0.25 heading_cos_threshold=0.5 risk_score=risk_v2_hybrid
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/flight/splatfacto/2024-09-12_172434/nerfstudio_models/step-000029999.ckpt
+There are 281756 Gaussians in the GSplat model
+[2026-07-01T11:06:01] loaded_risk_score_table=work/risk_aware_cbf/results/flight_risk_score_table_v0.csv
+[2026-07-01T11:06:01] start method=no_filter trial=0
+[2026-07-01T11:06:06] done method=no_filter trial=0 stop=stopped_before_goal collision=True steps=247 min_h=-0.0009112062980420887
+[2026-07-01T11:06:06] start method=no_filter trial=1
+[2026-07-01T11:06:11] done method=no_filter trial=1 stop=stopped_before_goal collision=True steps=247 min_h=-0.0009000907302834094
+[2026-07-01T11:06:12] start method=no_filter trial=2
+[2026-07-01T11:06:16] done method=no_filter trial=2 stop=stopped_before_goal collision=True steps=245 min_h=-0.0008999554556794465
+[2026-07-01T11:06:17] start method=no_filter trial=3
+[2026-07-01T11:06:21] done method=no_filter trial=3 stop=stopped_before_goal collision=True steps=243 min_h=-0.0008999749552458525
+[2026-07-01T11:06:22] start method=no_filter trial=4
+[2026-07-01T11:06:27] done method=no_filter trial=4 stop=stopped_before_goal collision=True steps=240 min_h=-0.0009000011486932635
+[2026-07-01T11:06:27] start method=no_filter trial=5
+[2026-07-01T11:06:32] done method=no_filter trial=5 stop=stopped_before_goal collision=True steps=236 min_h=-0.0009015118703246117
+[2026-07-01T11:06:32] start method=no_filter trial=6
+[2026-07-01T11:06:37] done method=no_filter trial=6 stop=stopped_before_goal collision=True steps=231 min_h=-0.0008999900310300291
+[2026-07-01T11:06:37] start method=no_filter trial=7
+[2026-07-01T11:06:41] done method=no_filter trial=7 stop=stopped_before_goal collision=True steps=226 min_h=-0.0007862866623327136
+[2026-07-01T11:06:42] start method=no_filter trial=8
+[2026-07-01T11:06:46] done method=no_filter trial=8 stop=stopped_before_goal collision=True steps=220 min_h=-0.0008975728414952755
+[2026-07-01T11:06:47] start method=no_filter trial=9
+[2026-07-01T11:06:51] done method=no_filter trial=9 stop=stopped_before_goal collision=True steps=213 min_h=-0.0009002518490888178
+[2026-07-01T11:06:51] start method=no_filter trial=10
+[2026-07-01T11:06:55] done method=no_filter trial=10 stop=stopped_before_goal collision=True steps=205 min_h=-0.0009074838017113507
+[2026-07-01T11:06:56] start method=no_filter trial=11
+[2026-07-01T11:06:59] done method=no_filter trial=11 stop=stopped_before_goal collision=True steps=197 min_h=-0.0009040095028467476
+[2026-07-01T11:07:00] start method=no_filter trial=12
+[2026-07-01T11:07:04] done method=no_filter trial=12 stop=stopped_before_goal collision=True steps=205 min_h=-0.0009000360732898116
+[2026-07-01T11:07:04] start method=no_filter trial=13
+[2026-07-01T11:07:08] done method=no_filter trial=13 stop=stopped_before_goal collision=True steps=205 min_h=-0.000899905280675739
+[2026-07-01T11:07:09] start method=no_filter trial=14
+[2026-07-01T11:07:13] done method=no_filter trial=14 stop=stopped_before_goal collision=True steps=198 min_h=-0.000894195050932467
+[2026-07-01T11:07:13] start method=no_filter trial=15
+[2026-07-01T11:07:17] done method=no_filter trial=15 stop=stopped_before_goal collision=True steps=207 min_h=-0.0009000727441161871
+[2026-07-01T11:07:18] start method=no_filter trial=16
+[2026-07-01T11:07:22] done method=no_filter trial=16 stop=stopped_before_goal collision=True steps=214 min_h=-0.0009097629226744175
+[2026-07-01T11:07:22] start method=no_filter trial=17
+[2026-07-01T11:07:26] done method=no_filter trial=17 stop=stopped_before_goal collision=True steps=221 min_h=-0.0009063759353011847
+[2026-07-01T11:07:27] start method=no_filter trial=18
+[2026-07-01T11:07:31] done method=no_filter trial=18 stop=stopped_before_goal collision=True steps=227 min_h=-0.000900066108442843
+[2026-07-01T11:07:32] start method=no_filter trial=19
+[2026-07-01T11:07:36] done method=no_filter trial=19 stop=stopped_before_goal collision=True steps=233 min_h=-0.0009000026620924473
+[2026-07-01T11:07:37] start method=safer_splat_filter trial=0
+ball-to-ellipsoid
+[2026-07-01T11:07:50] done method=safer_splat_filter trial=0 stop=stopped_before_goal collision=False steps=93 min_h=0.0006012368248775601
+[2026-07-01T11:07:50] start method=safer_splat_filter trial=1
+ball-to-ellipsoid
+[2026-07-01T11:08:02] done method=safer_splat_filter trial=1 stop=stopped_before_goal collision=False steps=88 min_h=0.0012490706285461783
+[2026-07-01T11:08:03] start method=safer_splat_filter trial=2
+ball-to-ellipsoid
+[2026-07-01T11:08:17] done method=safer_splat_filter trial=2 stop=stopped_before_goal collision=False steps=99 min_h=0.0007776990532875061
+[2026-07-01T11:08:18] start method=safer_splat_filter trial=3
+ball-to-ellipsoid
+[2026-07-01T11:08:30] done method=safer_splat_filter trial=3 stop=stopped_before_goal collision=False steps=89 min_h=0.0013759367866441607
+[2026-07-01T11:08:31] start method=safer_splat_filter trial=4
+ball-to-ellipsoid
+[2026-07-01T11:08:44] done method=safer_splat_filter trial=4 stop=stopped_before_goal collision=False steps=88 min_h=0.001369744655676186
+[2026-07-01T11:08:44] start method=safer_splat_filter trial=5
+ball-to-ellipsoid
+[2026-07-01T11:08:58] done method=safer_splat_filter trial=5 stop=stopped_before_goal collision=False steps=95 min_h=0.0011001419043168426
+[2026-07-01T11:08:59] start method=safer_splat_filter trial=6
+ball-to-ellipsoid
+[2026-07-01T11:09:14] done method=safer_splat_filter trial=6 stop=stopped_before_goal collision=False steps=110 min_h=0.0007961421506479383
+[2026-07-01T11:09:15] start method=safer_splat_filter trial=7
+ball-to-ellipsoid
+[2026-07-01T11:09:34] done method=safer_splat_filter trial=7 stop=stopped_before_goal collision=False steps=131 min_h=0.0005112328799441457
+[2026-07-01T11:09:34] start method=safer_splat_filter trial=8
+ball-to-ellipsoid
+[2026-07-01T11:09:51] done method=safer_splat_filter trial=8 stop=stopped_before_goal collision=False steps=119 min_h=0.0009239447535946965
+[2026-07-01T11:09:52] start method=safer_splat_filter trial=9
+ball-to-ellipsoid
+[2026-07-01T11:10:11] done method=safer_splat_filter trial=9 stop=stopped_before_goal collision=False steps=128 min_h=0.0005074029322713614
+[2026-07-01T11:10:11] start method=safer_splat_filter trial=10
+ball-to-ellipsoid
+[2026-07-01T11:10:23] done method=safer_splat_filter trial=10 stop=stopped_before_goal collision=False steps=83 min_h=0.0007119100773707032
+[2026-07-01T11:10:24] start method=safer_splat_filter trial=11
+ball-to-ellipsoid
+[2026-07-01T11:10:37] done method=safer_splat_filter trial=11 stop=stopped_before_goal collision=False steps=91 min_h=0.000669551664032042
+[2026-07-01T11:10:38] start method=safer_splat_filter trial=12
+ball-to-ellipsoid
+[2026-07-01T11:11:01] done method=safer_splat_filter trial=12 stop=stopped_before_goal collision=False steps=167 min_h=0.00034141039941459894
+[2026-07-01T11:11:02] start method=safer_splat_filter trial=13
+ball-to-ellipsoid
+[2026-07-01T11:11:27] done method=safer_splat_filter trial=13 stop=stopped_before_goal collision=False steps=179 min_h=0.0003255571937188506
+[2026-07-01T11:11:27] start method=safer_splat_filter trial=14
+ball-to-ellipsoid
+[2026-07-01T11:11:38] done method=safer_splat_filter trial=14 stop=stopped_before_goal collision=False steps=70 min_h=0.00034176651388406754
+[2026-07-01T11:11:38] start method=safer_splat_filter trial=15
+ball-to-ellipsoid
+[2026-07-01T11:11:42] done method=safer_splat_filter trial=15 stop=stopped_before_goal collision=False steps=27 min_h=0.00122303597163409
+[2026-07-01T11:11:43] start method=safer_splat_filter trial=16
+ball-to-ellipsoid
+[2026-07-01T11:11:48] done method=safer_splat_filter trial=16 stop=stopped_before_goal collision=False steps=37 min_h=0.0009070709347724915
+[2026-07-01T11:11:49] start method=safer_splat_filter trial=17
+ball-to-ellipsoid
+[2026-07-01T11:11:53] done method=safer_splat_filter trial=17 stop=stopped_before_goal collision=False steps=33 min_h=0.0006833110237494111
+[2026-07-01T11:11:54] start method=safer_splat_filter trial=18
+ball-to-ellipsoid
+[2026-07-01T11:11:57] done method=safer_splat_filter trial=18 stop=stopped_before_goal collision=False steps=23 min_h=0.000925130327232182
+[2026-07-01T11:11:58] start method=safer_splat_filter trial=19
+ball-to-ellipsoid
+[2026-07-01T11:11:59] done method=safer_splat_filter trial=19 stop=stopped_before_goal collision=False steps=9 min_h=0.0008767816470935941
+[2026-07-01T11:12:00] start method=risk_aware_v1_pre_cbf trial=0
+ball-to-ellipsoid
+[2026-07-01T11:12:08] done method=risk_aware_v1_pre_cbf trial=0 stop=stopped_before_goal collision=False steps=93 min_h=0.0006012364756315947
+[2026-07-01T11:12:09] start method=risk_aware_v1_pre_cbf trial=1
+ball-to-ellipsoid
+[2026-07-01T11:12:15] done method=risk_aware_v1_pre_cbf trial=1 stop=stopped_before_goal collision=False steps=86 min_h=0.0011846680426970124
+[2026-07-01T11:12:16] start method=risk_aware_v1_pre_cbf trial=2
+ball-to-ellipsoid
+[2026-07-01T11:12:24] done method=risk_aware_v1_pre_cbf trial=2 stop=stopped_before_goal collision=False steps=98 min_h=0.0007649329490959644
+[2026-07-01T11:12:25] start method=risk_aware_v1_pre_cbf trial=3
+ball-to-ellipsoid
+[2026-07-01T11:12:32] done method=risk_aware_v1_pre_cbf trial=3 stop=stopped_before_goal collision=False steps=89 min_h=0.0013708131154999137
+[2026-07-01T11:12:33] start method=risk_aware_v1_pre_cbf trial=4
+ball-to-ellipsoid
+[2026-07-01T11:12:40] done method=risk_aware_v1_pre_cbf trial=4 stop=stopped_before_goal collision=False steps=88 min_h=0.0013700685231015086
+[2026-07-01T11:12:40] start method=risk_aware_v1_pre_cbf trial=5
+ball-to-ellipsoid
+[2026-07-01T11:12:48] done method=risk_aware_v1_pre_cbf trial=5 stop=stopped_before_goal collision=False steps=95 min_h=0.0011001540115103126
+[2026-07-01T11:12:49] start method=risk_aware_v1_pre_cbf trial=6
+ball-to-ellipsoid
+[2026-07-01T11:12:58] done method=risk_aware_v1_pre_cbf trial=6 stop=stopped_before_goal collision=False steps=110 min_h=0.0007961430819705129
+[2026-07-01T11:12:59] start method=risk_aware_v1_pre_cbf trial=7
+ball-to-ellipsoid
+[2026-07-01T11:13:10] done method=risk_aware_v1_pre_cbf trial=7 stop=stopped_before_goal collision=False steps=131 min_h=0.0005112296203151345
+[2026-07-01T11:13:10] start method=risk_aware_v1_pre_cbf trial=8
+ball-to-ellipsoid
+[2026-07-01T11:13:20] done method=risk_aware_v1_pre_cbf trial=8 stop=stopped_before_goal collision=False steps=119 min_h=0.000923932995647192
+[2026-07-01T11:13:21] start method=risk_aware_v1_pre_cbf trial=9
+ball-to-ellipsoid
+[2026-07-01T11:13:32] done method=risk_aware_v1_pre_cbf trial=9 stop=stopped_before_goal collision=False steps=128 min_h=0.0005074009532108903
+[2026-07-01T11:13:33] start method=risk_aware_v1_pre_cbf trial=10
+ball-to-ellipsoid
+[2026-07-01T11:13:40] done method=risk_aware_v1_pre_cbf trial=10 stop=stopped_before_goal collision=False steps=83 min_h=0.000711904838681221
+[2026-07-01T11:13:41] start method=risk_aware_v1_pre_cbf trial=11
+ball-to-ellipsoid
+[2026-07-01T11:13:48] done method=risk_aware_v1_pre_cbf trial=11 stop=stopped_before_goal collision=False steps=91 min_h=0.0006695532938465476
+[2026-07-01T11:13:49] start method=risk_aware_v1_pre_cbf trial=12
+ball-to-ellipsoid
+[2026-07-01T11:14:03] done method=risk_aware_v1_pre_cbf trial=12 stop=stopped_before_goal collision=False steps=167 min_h=0.00034141039941459894
+[2026-07-01T11:14:04] start method=risk_aware_v1_pre_cbf trial=13
+ball-to-ellipsoid
+[2026-07-01T11:14:19] done method=risk_aware_v1_pre_cbf trial=13 stop=stopped_before_goal collision=False steps=179 min_h=0.0003255566116422415
+[2026-07-01T11:14:20] start method=risk_aware_v1_pre_cbf trial=14
+ball-to-ellipsoid
+[2026-07-01T11:14:26] done method=risk_aware_v1_pre_cbf trial=14 stop=stopped_before_goal collision=False steps=70 min_h=0.0003417645348235965
+[2026-07-01T11:14:27] start method=risk_aware_v1_pre_cbf trial=15
+ball-to-ellipsoid
+[2026-07-01T11:14:29] done method=risk_aware_v1_pre_cbf trial=15 stop=stopped_before_goal collision=False steps=27 min_h=0.0012230382999405265
+[2026-07-01T11:14:30] start method=risk_aware_v1_pre_cbf trial=16
+ball-to-ellipsoid
+[2026-07-01T11:14:33] done method=risk_aware_v1_pre_cbf trial=16 stop=stopped_before_goal collision=False steps=37 min_h=0.0009070654632523656
+[2026-07-01T11:14:34] start method=risk_aware_v1_pre_cbf trial=17
+ball-to-ellipsoid
+[2026-07-01T11:14:37] done method=risk_aware_v1_pre_cbf trial=17 stop=stopped_before_goal collision=False steps=33 min_h=0.0006833110237494111
+[2026-07-01T11:14:38] start method=risk_aware_v1_pre_cbf trial=18
+ball-to-ellipsoid
+[2026-07-01T11:14:39] done method=risk_aware_v1_pre_cbf trial=18 stop=stopped_before_goal collision=False steps=23 min_h=0.0009251312585547566
+[2026-07-01T11:14:40] start method=risk_aware_v1_pre_cbf trial=19
+ball-to-ellipsoid
+[2026-07-01T11:14:41] done method=risk_aware_v1_pre_cbf trial=19 stop=stopped_before_goal collision=False steps=9 min_h=0.0008767816470935941
+[2026-07-01T11:14:43] final_summary=[{"scene": "flight", "method": "no_filter", "rows": 20, "success_count": 0, "collision_count": 20, "collision_free_count": 0, "stopped_before_goal_count": 20, "solver_failed_count": 0, "min_safety_h_min": -0.0009112062980420887, "min_safety_h_mean": -0.0008959375962149351, "goal_distance_reduction_ratio_mean": 0.9883772841979942, "final_goal_distance_mean": 0.0064057572573775635, "closest_goal_distance_mean": 0.0007944881289181254, "num_steps_mean": 223.0, "runtime_mean_mean": 2.4078012426786226e-05, "runtime_p95_mean": 3.914110828191041e-05, "intervention_rate_mean": 0.0, "control_deviation_mean_mean": 0.0, "active_constraints_mean_mean": 0.0, "qp_infeasible_count_sum": 0}, {"scene": "flight", "method": "risk_aware_v1_pre_cbf", "rows": 20, "success_count": 0, "collision_count": 0, "collision_free_count": 20, "stopped_before_goal_count": 20, "solver_failed_count": 0, "min_safety_h_min": 0.0003255566116422415, "min_safety_h_mean": 0.0008068048569839448, "goal_distance_reduction_ratio_mean": 0.2115071512714543, "final_goal_distance_mean": 0.43471728721047975, "closest_goal_distance_mean": 0.43471728721047975, "num_steps_mean": 87.8, "runtime_mean_mean": 0.06539617363717053, "runtime_p95_mean": 0.07576430325396358, "intervention_rate_mean": 0.9055177228098202, "control_deviation_mean_mean": 0.08503613082708403, "active_constraints_mean_mean": 217.8666192331767, "qp_infeasible_count_sum": 0}, {"scene": "flight", "method": "safer_splat_filter", "rows": 20, "success_count": 0, "collision_count": 0, "collision_free_count": 20, "stopped_before_goal_count": 20, "solver_failed_count": 0, "min_safety_h_min": 0.0003255571937188506, "min_safety_h_mean": 0.0008109039161354303, "goal_distance_reduction_ratio_mean": 0.21136406099493307, "final_goal_distance_mean": 0.4347962065941887, "closest_goal_distance_mean": 0.4347962065941887, "num_steps_mean": 87.95, "runtime_mean_mean": 0.12016006521805353, "runtime_p95_mean": 0.13341897851787504, "intervention_rate_mean": 0.9152241247504416, "control_deviation_mean_mean": 0.08527259647929038, "active_constraints_mean_mean": 242.0554452233701, "qp_infeasible_count_sum": 0}]
+[2026-07-01T11:14:43] wrote=work/risk_aware_cbf/results/risk_aware_v1_pre_cbf_flight_20_default

@@ -1,0 +1,50 @@
+{
+  "created_at": "2026-06-29T17:43:21",
+  "script": "/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py",
+  "config": {
+    "scene": "stonehenge",
+    "methods": [
+      "safer_splat_filter"
+    ],
+    "trial_start": 0,
+    "trial_end": 2,
+    "max_steps": 800,
+    "goal_tolerance": 0.001,
+    "output_dir": "work/risk_aware_cbf/results/baseline_detailed_logging_stonehenge_smoke3",
+    "resume": true,
+    "skip_existing": true,
+    "device": "cuda",
+    "active_log_limit": 50,
+    "near_critical_h": 0.001
+  },
+  "min_safety_h_note": "official GSplatLoader.query_distance safety h value; not meters",
+  "active_constraint_logging": {
+    "scope": "lowest-h selected baseline constraints up to active_log_limit per step",
+    "active_log_limit": 50,
+    "near_critical_h": 0.001
+  },
+  "summary": [
+    {
+      "scene": "stonehenge",
+      "method": "safer_splat_filter",
+      "rows": 3,
+      "success_count": 0,
+      "collision_count": 0,
+      "collision_free_count": 3,
+      "stopped_before_goal_count": 3,
+      "solver_failed_count": 0,
+      "min_safety_h_min": 0.0008069269824773073,
+      "min_safety_h_mean": 0.0009905836001659434,
+      "goal_distance_reduction_ratio_mean": 0.4018082982258126,
+      "final_goal_distance_mean": 0.4690688264632958,
+      "closest_goal_distance_mean": 0.4690688264632958,
+      "num_steps_mean": 181.0,
+      "runtime_mean_mean": 0.05884126803794146,
+      "runtime_p95_mean": 0.06789940701176723,
+      "intervention_rate_mean": 0.9591520467836258,
+      "control_deviation_mean_mean": 0.05253575512589793,
+      "active_constraints_mean_mean": 416.41058929374714,
+      "qp_infeasible_count_sum": 0
+    }
+  ]
+}

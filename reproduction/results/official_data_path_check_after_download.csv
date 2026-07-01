@@ -1,0 +1,11 @@
+path,exists,kind,file_count_limited,size_bytes
+data,True,symlink_dir->/disk1/zlab/datasets/safer_splat_gdrive/data,4874,
+outputs,True,symlink_dir->/disk1/zlab/datasets/safer_splat_gdrive/outputs,24,
+data/flight,True,dir,1993,
+data/flight/images,True,dir,496,
+data/flight/transforms.json,True,file,0,439346
+outputs/flight/splatfacto/2024-09-12_172434/config.yml,True,file,0,7105
+outputs/flight/splatfacto/2024-09-12_172434/nerfstudio_models,True,dir,1,
+outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml,True,file,0,6933
+outputs/statues/splatfacto/2024-09-11_095852/config.yml,True,file,0,7107
+outputs/old_union2/splatfacto/2024-09-02_151414/config.yml,True,file,0,7113

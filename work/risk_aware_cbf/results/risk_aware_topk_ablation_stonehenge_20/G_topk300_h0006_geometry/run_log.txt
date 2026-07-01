@@ -1,0 +1,46 @@
+[2026-06-30T12:25:26] script=/disk1/zlab/projects/safer-splat/work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py
+[2026-06-30T12:25:26] scene=stonehenge methods=['risk_aware_topk_v0'] trials=0-19
+[2026-06-30T12:25:26] risk_aware_topk=topk=300 h_critical=0.0006 near_distance_threshold=0.05 risk_score=risk_v1_geometry
+[2026-06-30T12:25:31] loaded_risk_score_table=work/risk_aware_cbf/results/risk_score_table_v0.csv
+[2026-06-30T12:25:31] start method=risk_aware_topk_v0 trial=0
+[2026-06-30T12:25:58] done method=risk_aware_topk_v0 trial=0 stop=stopped_before_goal collision=False steps=325 min_h=0.0008511263877153397
+[2026-06-30T12:25:58] start method=risk_aware_topk_v0 trial=1
+[2026-06-30T12:26:07] done method=risk_aware_topk_v0 trial=1 stop=stopped_before_goal collision=False steps=114 min_h=0.0008069268660619855
+[2026-06-30T12:26:08] start method=risk_aware_topk_v0 trial=2
+[2026-06-30T12:26:16] done method=risk_aware_topk_v0 trial=2 stop=stopped_before_goal collision=False steps=104 min_h=0.00131369405426085
+[2026-06-30T12:26:16] start method=risk_aware_topk_v0 trial=3
+[2026-06-30T12:26:26] done method=risk_aware_topk_v0 trial=3 stop=stopped_before_goal collision=False steps=123 min_h=0.0008017164655029774
+[2026-06-30T12:26:27] start method=risk_aware_topk_v0 trial=4
+[2026-06-30T12:26:54] done method=risk_aware_topk_v0 trial=4 stop=stopped_before_goal collision=False steps=357 min_h=0.0008385834516957402
+[2026-06-30T12:26:55] start method=risk_aware_topk_v0 trial=5
+[2026-06-30T12:27:09] done method=risk_aware_topk_v0 trial=5 stop=stopped_before_goal collision=False steps=170 min_h=0.0007147258147597313
+[2026-06-30T12:27:09] start method=risk_aware_topk_v0 trial=6
+[2026-06-30T12:27:28] done method=risk_aware_topk_v0 trial=6 stop=stopped_before_goal collision=False steps=243 min_h=0.000538584659807384
+[2026-06-30T12:27:29] start method=risk_aware_topk_v0 trial=7
+[2026-06-30T12:27:47] done method=risk_aware_topk_v0 trial=7 stop=stopped_before_goal collision=False steps=225 min_h=0.0008742104982957244
+[2026-06-30T12:27:47] start method=risk_aware_topk_v0 trial=8
+[2026-06-30T12:28:13] done method=risk_aware_topk_v0 trial=8 stop=stopped_before_goal collision=False steps=331 min_h=0.0006320533575490117
+[2026-06-30T12:28:13] start method=risk_aware_topk_v0 trial=9
+[2026-06-30T12:28:37] done method=risk_aware_topk_v0 trial=9 stop=stopped_before_goal collision=False steps=303 min_h=0.0011710411636158824
+[2026-06-30T12:28:38] start method=risk_aware_topk_v0 trial=10
+[2026-06-30T12:28:59] done method=risk_aware_topk_v0 trial=10 stop=stopped_before_goal collision=False steps=262 min_h=0.0005337460897862911
+[2026-06-30T12:29:00] start method=risk_aware_topk_v0 trial=11
+[2026-06-30T12:29:27] done method=risk_aware_topk_v0 trial=11 stop=stopped_before_goal collision=False steps=347 min_h=0.00046901931636966765
+[2026-06-30T12:29:28] start method=risk_aware_topk_v0 trial=12
+[2026-06-30T12:29:57] done method=risk_aware_topk_v0 trial=12 stop=stopped_before_goal collision=False steps=364 min_h=0.0003336713707540184
+[2026-06-30T12:29:57] start method=risk_aware_topk_v0 trial=13
+[2026-06-30T12:30:07] done method=risk_aware_topk_v0 trial=13 stop=stopped_before_goal collision=False steps=123 min_h=0.0007767630741000175
+[2026-06-30T12:30:08] start method=risk_aware_topk_v0 trial=14
+[2026-06-30T12:30:17] done method=risk_aware_topk_v0 trial=14 stop=stopped_before_goal collision=False steps=115 min_h=0.0010722823208197951
+[2026-06-30T12:30:18] start method=risk_aware_topk_v0 trial=15
+[2026-06-30T12:30:28] done method=risk_aware_topk_v0 trial=15 stop=stopped_before_goal collision=False steps=128 min_h=0.0005726523231714964
+[2026-06-30T12:30:28] start method=risk_aware_topk_v0 trial=16
+[2026-06-30T12:30:32] done method=risk_aware_topk_v0 trial=16 stop=stopped_before_goal collision=False steps=39 min_h=0.0010280637070536613
+[2026-06-30T12:30:32] start method=risk_aware_topk_v0 trial=17
+[2026-06-30T12:31:08] done method=risk_aware_topk_v0 trial=17 stop=stopped_before_goal collision=False steps=464 min_h=0.000492031336762011
+[2026-06-30T12:31:09] start method=risk_aware_topk_v0 trial=18
+[2026-06-30T12:31:42] done method=risk_aware_topk_v0 trial=18 stop=stopped_before_goal collision=False steps=411 min_h=0.0006928765214979649
+[2026-06-30T12:31:42] start method=risk_aware_topk_v0 trial=19
+[2026-06-30T12:32:14] done method=risk_aware_topk_v0 trial=19 stop=stopped_before_goal collision=False steps=404 min_h=0.0007741648005321622
+[2026-06-30T12:32:15] final_summary=[{"scene": "stonehenge", "method": "risk_aware_topk_v0", "rows": 20, "success_count": 0, "collision_count": 0, "collision_free_count": 20, "stopped_before_goal_count": 20, "solver_failed_count": 0, "min_safety_h_min": 0.0003336713707540184, "min_safety_h_mean": 0.0007643966790055856, "goal_distance_reduction_ratio_mean": 0.571165545055878, "final_goal_distance_mean": 0.3362577190811624, "closest_goal_distance_mean": 0.335288241059639, "num_steps_mean": 247.6, "runtime_mean_mean": 0.06076030855318383, "runtime_p95_mean": 0.06931113524828106, "intervention_rate_mean": 0.9084561164059319, "control_deviation_mean_mean": 0.05931501860002973, "active_constraints_mean_mean": 289.5305693629206, "qp_infeasible_count_sum": 0}]
+[2026-06-30T12:32:15] wrote=work/risk_aware_cbf/results/risk_aware_topk_ablation_stonehenge_20/G_topk300_h0006_geometry

@@ -1,0 +1,3 @@
+method,trial,success,collision,minimum_clearance,path_length,num_steps,runtime_mean,runtime_p95,intervention_rate,control_deviation_mean,control_deviation_max,active_constraints_mean,active_constraints_p95,qp_infeasible_count,wall_time_s,gaussian_pool_size,max_active_before_cbf_pruning
+no_filter,53,True,False,0.01270182803273201,0.596582355383411,105,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,1.6107556261122227,2500,96
+safer_splat_filter,53,True,False,0.02475292980670929,0.601032039677821,145,0.016535115126391938,0.0170144185423851,0.5517241379310345,0.050513701346008064,0.12639239797922006,23.358620689655172,36.0,0,4.6652269922196865,2500,96

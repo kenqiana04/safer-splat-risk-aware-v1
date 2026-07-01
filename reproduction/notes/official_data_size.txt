@@ -1,0 +1,2 @@
+3.2G	data
+1.5G	outputs

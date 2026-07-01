@@ -1,0 +1,43 @@
+/disk1/zlab/projects/safer-splat/ns_utils/nerfstudio_utils.py:117: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  assert(self.pipeline.model, SplatfactoModel)
+scene=stonehenge
+trial=0
+device=cuda
+checkpoint=outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml
+Skipping 0 files in dataset split train.
+Skipping 0 files in dataset split test.
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/stonehenge/splatfacto/2024-09-11_100724/nerfstudio_models/step-000029999.ckpt
+There are 116446 Gaussians in the GSplat model
+load_seconds=4.590682
+ball-to-ellipsoid
+{
+  "scene": "stonehenge",
+  "trial": 0,
+  "checkpoint": "outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml",
+  "success": false,
+  "feasible": true,
+  "collision": false,
+  "minimum_clearance": 0.0008511263877153397,
+  "minimum_clearance_note": "This is the official run.py safety h value from GSplatLoader.query_distance, not a postprocessed metric in meters.",
+  "path_length": 0.6425270438194275,
+  "num_steps": 325,
+  "runtime_mean": 0.059711818213646226,
+  "runtime_p95": 0.06999427638947964,
+  "intervention_rate": 0.9046153846153846,
+  "control_deviation_mean": 0.02506676091135905,
+  "control_deviation_max": 0.07492418864905848,
+  "active_constraints_mean": 316.7938461538462,
+  "active_constraints_p95": 485.0,
+  "qp_infeasible_count": 0,
+  "load_seconds": 4.59068248514086,
+  "gaussian_count": 116446,
+  "stop_reason": "stopped_before_goal",
+  "n_steps_requested": 500,
+  "radius": 0.015,
+  "dt": 0.05,
+  "method": "ball-to-ellipsoid"
+}
+wrote=reproduction/results/official_run_smoke/official_smoke_trajectory.csv
+wrote=reproduction/results/official_run_smoke/official_smoke_summary.csv
+wrote=reproduction/results/official_run_smoke/metrics.json

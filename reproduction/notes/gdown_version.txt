@@ -1,0 +1,10 @@
+Name: gdown
+Version: 6.1.0
+Summary: Google Drive Public File/Folder Downloader
+Home-page: https://github.com/wkentaro/gdown
+Author: 
+Author-email: Kentaro Wada <www.kentaro.wada@gmail.com>
+License: MIT
+Location: /disk1/zlab/conda_envs/safer_splat/lib/python3.10/site-packages
+Requires: beautifulsoup4, filelock, requests, tqdm, typing-extensions
+Required-by: 

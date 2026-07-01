@@ -1,0 +1,58 @@
+cbf/cbf_utils.py:8:from ellipsoids.polytopes_utils import h_rep_minimal, find_interior
+cbf/cbf_utils.py:10:class CBF():
+cbf/cbf_utils.py:41:    def get_QP_matrices(self, x, u_des, minimal=True):
+cbf/cbf_utils.py:45:        h, grad_h, hes_h, info = self.gsplat.query_distance(x[..., :3], radius=self.radius, distance_type=self.distance_type) # can pass in an optional argument for a radius
+cbf/cbf_utils.py:105:                    Aminimal, lminimal = h_rep_minimal(collisionless_A, collisionless_l, feasible_pt)
+cbf/cbf_utils.py:111:                    # Aminimal, lminimal = h_rep_minimal(A, l, feasible_pt)               
+cbf/cbf_utils.py:125:    def solve_QP(self, x, u_des):
+splat/distances.py:96:def distance_point_ellipsoid(s, x):
+splat/gsplat_utils.py:10:from splat.distances import distance_point_ellipsoid, batch_point_distance, batch_squared_point_distance, batch_mahalanobis_distance
+splat/gsplat_utils.py:13:class GSplatLoader():
+splat/gsplat_utils.py:103:    def query_distance(self, x, distance_type = None, radius=0., R_robot=None, S_robot=None, epsilon=0.):
+splat/gsplat_utils.py:169:            dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_frame)
+splat/gsplat_utils.py:193:class DummyGSplatLoader(GSplatLoader):
+ellipsoids/polytopes_utils.py:5:def h_rep_minimal(A, b, pt):
+dynamics/systems.py:40:class DoubleIntegrator():
+run.py:10:from splat.gsplat_utils import GSplatLoader
+run.py:12:from dynamics.systems import DoubleIntegrator, double_integrator_dynamics
+run.py:79:        gsplat = GSplatLoader(path_to_gsplat, device)
+run.py:84:            gsplat_high_res = GSplatLoader(path_to_gsplat_high_res, device)
+run.py:86:        dynamics = DoubleIntegrator(device=device, ndim=3)
+run.py:157:                    h, grad_h, hess_h, info = gsplat_high_res.query_distance(x, radius=radius, distance_type='ball-to-ellipsoid')
+run.py:159:                    h, grad_h, hess_h, info = gsplat.query_distance(x, radius=radius, distance_type='ball-to-ellipsoid')
+reproduction/scripts/run_offline_filter_comparison.py:28:from dynamics.systems import DoubleIntegrator, double_integrator_dynamics  # noqa: E402
+reproduction/scripts/run_offline_filter_comparison.py:85:    dynamics = DoubleIntegrator(device=device, ndim=3)
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:25:from splat.gsplat_utils import GSplatLoader
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:27:from dynamics.systems import DoubleIntegrator, double_integrator_dynamics
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:62:SAFETY_H_NOTE = "official GSplatLoader.query_distance safety h value; not meters"
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:174:    def get_QP_matrices(self, *args: Any, **kwargs: Any):
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:179:    def solve_QP(self, x: torch.Tensor, u_des: torch.Tensor) -> torch.Tensor:
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:285:    gsplat: GSplatLoader,
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:286:    dynamics: DoubleIntegrator,
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:352:        h, _, _, _ = gsplat.query_distance(
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:837:        gsplat = GSplatLoader(scene_cfg["path_to_gsplat"], device)
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:842:        dynamics = DoubleIntegrator(device=device, ndim=3)
+reproduction/scripts/run_official_runpy_smoke.py:21:from splat.gsplat_utils import GSplatLoader
+reproduction/scripts/run_official_runpy_smoke.py:23:from dynamics.systems import DoubleIntegrator, double_integrator_dynamics
+reproduction/scripts/run_official_runpy_smoke.py:63:    def get_QP_matrices(self, *args, **kwargs):
+reproduction/scripts/run_official_runpy_smoke.py:68:    def solve_QP(self, x, u_des):
+reproduction/scripts/run_official_runpy_smoke.py:127:    gsplat = GSplatLoader(cfg["path_to_gsplat"], device)
+reproduction/scripts/run_official_runpy_smoke.py:131:    dynamics = DoubleIntegrator(device=device, ndim=3)
+reproduction/scripts/run_official_runpy_smoke.py:176:        h, _, _, _ = gsplat.query_distance(x, radius=cfg["radius"], distance_type=method)
+reproduction/scripts/run_official_runpy_smoke.py:230:        "minimum_clearance_note": "This is the official run.py safety h value from GSplatLoader.query_distance, not a postprocessed metric in meters.",
+reproduction/scripts/run_offline_safety_filter_smoke.py:8:`splat/gsplat_utils.py` because importing GSplatLoader requires Nerfstudio and
+reproduction/scripts/run_offline_safety_filter_smoke.py:31:from dynamics.systems import DoubleIntegrator, double_integrator_dynamics  # noqa: E402
+reproduction/scripts/run_offline_safety_filter_smoke.py:33:from splat.distances import distance_point_ellipsoid  # noqa: E402
+reproduction/scripts/run_offline_safety_filter_smoke.py:43:    The math in `query_distance` is the same ball-to-ellipsoid path as
+reproduction/scripts/run_offline_safety_filter_smoke.py:44:    `splat/gsplat_utils.py::GSplatLoader.query_distance`, but dependency-heavy
+reproduction/scripts/run_offline_safety_filter_smoke.py:89:    def query_distance(self, x: torch.Tensor, distance_type: str | None = None, radius: float = 0.0,
+reproduction/scripts/run_offline_safety_filter_smoke.py:102:        squared_dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_frame)
+reproduction/scripts/run_offline_safety_filter_smoke.py:113:        _, _, _, info = self.query_distance(x[:3], radius=radius, distance_type="ball-to-ellipsoid")
+reproduction/scripts/run_offline_safety_filter_smoke.py:122:    def get_QP_matrices(self, x, u_des, minimal=True):
+reproduction/scripts/run_offline_safety_filter_smoke.py:160:    dynamics = DoubleIntegrator(device=device, ndim=3)
+reproduction/scripts/test_distance_cbf_sanity.py:15:from dynamics.systems import DoubleIntegrator  # noqa: E402
+reproduction/scripts/test_distance_cbf_sanity.py:17:from splat.distances import distance_point_ellipsoid  # noqa: E402
+reproduction/scripts/test_distance_cbf_sanity.py:32:    def query_distance(self, x, distance_type=None, radius=0.0, R_robot=None, S_robot=None, epsilon=0.0):
+reproduction/scripts/test_distance_cbf_sanity.py:41:        squared_dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_abs)
+reproduction/scripts/test_distance_cbf_sanity.py:51:        _, _, _, info = self.query_distance(torch.tensor(point, dtype=torch.float32, device=self.device), radius=radius, distance_type="ball-to-ellipsoid")
+reproduction/scripts/test_distance_cbf_sanity.py:78:    dynamics = DoubleIntegrator(device=device, ndim=3)

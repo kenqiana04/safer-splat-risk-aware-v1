@@ -1,0 +1,8 @@
+{
+  "summary": "work/risk_aware_cbf/results/per_step_conservatism_summary.csv",
+  "high_intervention_steps": "work/risk_aware_cbf/results/high_intervention_steps.csv",
+  "active_gaussian_frequency": "work/risk_aware_cbf/results/active_gaussian_frequency.csv",
+  "active_gaussian_attribute_summary": "work/risk_aware_cbf/results/active_gaussian_attribute_summary.csv",
+  "figure": "work/risk_aware_cbf/figures/per_step_conservatism_plots.png",
+  "report": "work/risk_aware_cbf/notes/PER_STEP_CONSERVATISM_ANALYSIS.md"
+}

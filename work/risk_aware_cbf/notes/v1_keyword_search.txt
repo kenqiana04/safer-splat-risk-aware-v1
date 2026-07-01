@@ -1,0 +1,255 @@
+splat/distances.py:3:def batch_mahalanobis_distance(x, means, covs_inv):
+splat/distances.py:4:    # Computes the Mahalanobis distance of a batch of points x to a batch of Gaussians with means and covariances.
+splat/distances.py:6:    # means: B x n
+splat/distances.py:13:    diff = x - means
+splat/distances.py:20:def batch_point_distance(x, means):
+splat/distances.py:23:    # means: B x n
+splat/distances.py:30:    diff = x - means  # B x 3
+splat/distances.py:50:def batch_squared_point_distance(x, means):
+splat/distances.py:53:    # means: B x n
+splat/distances.py:58:    diff = x - means  # B x 3
+splat/distances.py:96:def distance_point_ellipsoid(s, x):
+匹配到二进制文件 splat/__pycache__/gsplat_utils.cpython-38.pyc
+匹配到二进制文件 splat/__pycache__/utils.cpython-38.pyc
+匹配到二进制文件 splat/__pycache__/distances.cpython-38.pyc
+匹配到二进制文件 splat/__pycache__/gsplat_utils.cpython-310.pyc
+匹配到二进制文件 splat/__pycache__/distances.cpython-39.pyc
+匹配到二进制文件 splat/__pycache__/gsplat_utils.cpython-39.pyc
+匹配到二进制文件 splat/__pycache__/distances.cpython-310.pyc
+splat/gsplat_utils.py:10:from splat.distances import distance_point_ellipsoid, batch_point_distance, batch_squared_point_distance, batch_mahalanobis_distance
+splat/gsplat_utils.py:13:class GSplatLoader():
+splat/gsplat_utils.py:31:        self.means = self.splat.pipeline.model.means.detach().clone()
+splat/gsplat_utils.py:32:        self.rots = self.splat.pipeline.model.quats.detach().clone()
+splat/gsplat_utils.py:33:        self.scales = self.splat.pipeline.model.scales.detach().clone()
+splat/gsplat_utils.py:34:        self.scales = torch.exp(self.scales)
+splat/gsplat_utils.py:36:        self.covs_inv = compute_cov(self.rots, 1 / self.scales)
+splat/gsplat_utils.py:37:        self.covs = compute_cov(self.rots, self.scales)
+splat/gsplat_utils.py:42:        print(f'There are {self.means.shape[0]} Gaussians in the GSplat model')
+splat/gsplat_utils.py:51:        keys = ['means', 'rotations', 'colors', 'opacities', 'scalings']
+splat/gsplat_utils.py:62:        self.means = tensors['means']
+splat/gsplat_utils.py:63:        self.rots = tensors['rotations']
+splat/gsplat_utils.py:66:        self.scales = tensors['scalings']
+splat/gsplat_utils.py:72:        print(f"Scales tensor size: {self.scales.size()}")
+splat/gsplat_utils.py:76:        self.scales = torch.exp(self.scales)
+splat/gsplat_utils.py:79:        self.covs_inv = compute_cov(self.rots, 1. / self.scales)
+splat/gsplat_utils.py:80:        self.covs = compute_cov(self.rots, self.scales)
+splat/gsplat_utils.py:86:            mask = torch.all((self.means - bounds[:, 0] >= 0) & (bounds[:, 1] - self.means >= 0), dim=-1)
+splat/gsplat_utils.py:87:            means = self.means[mask]
+splat/gsplat_utils.py:88:            rots = self.rots[mask]
+splat/gsplat_utils.py:89:            scales = self.scales[mask]
+splat/gsplat_utils.py:92:            means = self.means
+splat/gsplat_utils.py:93:            rots = self.rots
+splat/gsplat_utils.py:94:            scales = self.scales
+splat/gsplat_utils.py:97:        scene = create_gs_mesh(means.cpu().numpy(), quaternion_to_rotation_matrix(rots).cpu().numpy(), scales.cpu().numpy(), colors.cpu().numpy(), res=res, transform=None, scale=None)
+splat/gsplat_utils.py:103:    def query_distance(self, x, distance_type = None, radius=0., R_robot=None, S_robot=None, epsilon=0.):
+splat/gsplat_utils.py:110:            ball_radius = torch.max(self.scales, dim=-1)[0]
+splat/gsplat_utils.py:111:            dist, grad, hess = batch_point_distance(x[..., :3].squeeze(), self.means)
+splat/gsplat_utils.py:120:            ball_radius = torch.max(self.scales, dim=-1)[0]
+splat/gsplat_utils.py:121:            squared_dist, grad, hess = batch_squared_point_distance(x[..., :3].squeeze(), self.means)
+splat/gsplat_utils.py:130:            squared_dist, grad, hess = batch_squared_point_distance(x[..., :3].squeeze(), self.means)
+splat/gsplat_utils.py:139:            maha_dist, grad, hess = batch_mahalanobis_distance(x[..., :3].squeeze(), self.means, self.covs_inv)
+splat/gsplat_utils.py:152:            rots = quaternion_to_rotation_matrix(self.rots)
+splat/gsplat_utils.py:154:            # Sort the scales in descending order as required by the solver
+splat/gsplat_utils.py:155:            sorted_output = torch.sort(self.scales, dim=-1, descending=True)
+splat/gsplat_utils.py:156:            sorted_scales, sorted_inds = sorted_output[0], sorted_output[1]
+splat/gsplat_utils.py:159:            rots = torch.gather(rots, 2, sorted_inds[..., None, :].expand_as(rots))
+splat/gsplat_utils.py:162:            x_local_frame = torch.bmm( torch.transpose(rots, 1, 2) , (x[..., :3] - self.means).unsqueeze(-1) ).squeeze() + 1e-8
+splat/gsplat_utils.py:169:            dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_frame)
+splat/gsplat_utils.py:172:            y = torch.bmm(rots, (flip * yhat).unsqueeze(-1)).squeeze(-1) + self.means
+splat/gsplat_utils.py:175:            phi = torch.sign( torch.sum( (1./ sorted_scales)**2 * (x_local_frame**2) , dim=-1) - 1.)
+splat/gsplat_utils.py:197:    def initialize_attributes(self, means, rots, scales, colors=None):
+splat/gsplat_utils.py:198:        self.means = means.to(self.device)
+splat/gsplat_utils.py:199:        self.rots = rots.to(self.device)
+splat/gsplat_utils.py:200:        self.scales = scales.to(self.device)
+splat/gsplat_utils.py:202:        self.cov_inv = compute_cov(self.rots, 1 / self.scales)
+splat/gsplat_utils.py:203:        self.covs = compute_cov(self.rots, self.scales)
+splat/gsplat_utils.py:208:            self.colors = 0.5*torch.ones(means.shape[0], 3).to(self.device)
+匹配到二进制文件 cbf/__pycache__/utils.cpython-38.pyc
+匹配到二进制文件 cbf/__pycache__/cbf_utils.cpython-39.pyc
+匹配到二进制文件 cbf/__pycache__/cbf_utils.cpython-310.pyc
+匹配到二进制文件 cbf/__pycache__/cbf_utils.cpython-38.pyc
+cbf/cbf_utils.py:8:from ellipsoids.polytopes_utils import h_rep_minimal, find_interior
+cbf/cbf_utils.py:41:    def get_QP_matrices(self, x, u_des, minimal=True):
+cbf/cbf_utils.py:105:                    Aminimal, lminimal = h_rep_minimal(collisionless_A, collisionless_l, feasible_pt)
+cbf/cbf_utils.py:111:                    # Aminimal, lminimal = h_rep_minimal(A, l, feasible_pt)               
+cbf/cbf_utils.py:125:    def solve_QP(self, x, u_des):
+ellipsoids/polytopes_utils.py:5:def h_rep_minimal(A, b, pt):
+匹配到二进制文件 ellipsoids/__pycache__/mesh_utils.cpython-38.pyc
+匹配到二进制文件 ellipsoids/__pycache__/utils.cpython-38.pyc
+匹配到二进制文件 ellipsoids/__pycache__/mesh_utils.cpython-310.pyc
+匹配到二进制文件 ellipsoids/__pycache__/mesh_utils.cpython-39.pyc
+匹配到二进制文件 ellipsoids/__pycache__/polytopes_utils.cpython-39.pyc
+匹配到二进制文件 ellipsoids/__pycache__/polytopes_utils.cpython-310.pyc
+匹配到二进制文件 ellipsoids/__pycache__/math_utils.cpython-38.pyc
+ellipsoids/mesh_utils.py:5:def create_gs_mesh(means, rotations, scalings, colors, res=4, transform=None, scale=None):
+ellipsoids/mesh_utils.py:10:        means = means * scale
+ellipsoids/mesh_utils.py:17:        means = np.matmul(rot, means[..., None]).squeeze() + t
+ellipsoids/mesh_utils.py:25:    for (mean, R, S, col) in tqdm.tqdm(zip(means, rotations, scalings, colors), desc="Generating mesh"):
+work/risk_aware_cbf/notes/BASELINE_INTERFACE_MAP.md:13:| Official checkpoint loading | `splat/gsplat_utils.py`, `run.py` | `GSplatLoader(Path(...), device)` | Nerfstudio config path, device | loader with means, scales, rotations, opacity, colors | Loads official Gaussian splat checkpoint before rollout | Read-only feature extraction or wrapper-side cache | Low |
+work/risk_aware_cbf/notes/BASELINE_INTERFACE_MAP.md:14:| Gaussian mean extraction | `splat/gsplat_utils.py` | `GSplatLoader.means` | loaded checkpoint | tensor `[N, 3]` | Used inside distance query | Read-only geometry feature, proximity ranking | Low |
+work/risk_aware_cbf/notes/BASELINE_INTERFACE_MAP.md:15:| Gaussian scale extraction | `splat/gsplat_utils.py` | `GSplatLoader.scales` | loaded checkpoint | tensor `[N, 3]` | Used to build ellipsoids and distance constraints | Risk score geometry term, adaptive candidate ranking | Low |
+work/risk_aware_cbf/notes/BASELINE_INTERFACE_MAP.md:16:| Gaussian rotation extraction | `splat/gsplat_utils.py` | `GSplatLoader.rots` | loaded checkpoint | quaternion tensor | Used to rotate points into ellipsoid frame | Risk score anisotropy/orientation feature | Low |
+work/risk_aware_cbf/notes/BASELINE_INTERFACE_MAP.md:22:| Pruning | `ellipsoids/polytopes_utils.py`, `cbf/cbf_utils.py` | `h_rep_minimal` | half-space constraints, feasible point | reduced `A`, `l` | Reduces collision-free constraints before QP | Candidate ranking could be compared against this pruning stage | High |
+work/risk_aware_cbf/notes/BASELINE_INTERFACE_MAP.md:23:| Ellipsoid distance primitive | `splat/distances.py` | `distance_point_ellipsoid` | ellipsoid scales, local point | distance, Hessian, closest point | Core geometric distance solver | Do not modify; use only for read-only analysis | High |
+work/risk_aware_cbf/notes/extract_gaussian_attributes.log:15:    "means",
+work/risk_aware_cbf/notes/extract_gaussian_attributes.log:16:    "scales",
+work/risk_aware_cbf/notes/RISK_SCORE_DESIGN_V0.md:7:The first version should use risk-aware constraint prioritization with hard safety fallback. This means risk ranking can decide which non-critical constraints receive computation budget, but it must not remove near-critical constraints that are likely to determine immediate safety.
+work/risk_aware_cbf/notes/GAUSSIAN_ATTRIBUTE_EXTRACTION_NOTES.md:9:    "means",
+work/risk_aware_cbf/notes/GAUSSIAN_ATTRIBUTE_EXTRACTION_NOTES.md:10:    "scales",
+work/risk_aware_cbf/notes/RISK_AWARE_TOPK_V0_DESIGN.md:28:2. Force include all candidates with `distance_to_robot <= near_distance_threshold` when Gaussian means are available.
+work/risk_aware_cbf/notes/GO_NO_GO_CRITERIA.md:53:GO means the next task may implement a separate risk-aware wrapper under `work/risk_aware_cbf/`, with a hard safety fallback that always preserves near-critical constraints. It does not justify modifying official SAFER-Splat baseline code, changing `run.py`, or replacing the official CBF formula.
+work/risk_aware_cbf/notes/interface_keyword_search.txt:1:cbf/cbf_utils.py:8:from ellipsoids.polytopes_utils import h_rep_minimal, find_interior
+work/risk_aware_cbf/notes/interface_keyword_search.txt:3:cbf/cbf_utils.py:41:    def get_QP_matrices(self, x, u_des, minimal=True):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:5:cbf/cbf_utils.py:105:                    Aminimal, lminimal = h_rep_minimal(collisionless_A, collisionless_l, feasible_pt)
+work/risk_aware_cbf/notes/interface_keyword_search.txt:6:cbf/cbf_utils.py:111:                    # Aminimal, lminimal = h_rep_minimal(A, l, feasible_pt)               
+work/risk_aware_cbf/notes/interface_keyword_search.txt:7:cbf/cbf_utils.py:125:    def solve_QP(self, x, u_des):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:8:splat/distances.py:96:def distance_point_ellipsoid(s, x):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:9:splat/gsplat_utils.py:10:from splat.distances import distance_point_ellipsoid, batch_point_distance, batch_squared_point_distance, batch_mahalanobis_distance
+work/risk_aware_cbf/notes/interface_keyword_search.txt:10:splat/gsplat_utils.py:13:class GSplatLoader():
+work/risk_aware_cbf/notes/interface_keyword_search.txt:11:splat/gsplat_utils.py:103:    def query_distance(self, x, distance_type = None, radius=0., R_robot=None, S_robot=None, epsilon=0.):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:12:splat/gsplat_utils.py:169:            dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_frame)
+work/risk_aware_cbf/notes/interface_keyword_search.txt:14:ellipsoids/polytopes_utils.py:5:def h_rep_minimal(A, b, pt):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:28:reproduction/scripts/run_official_checkpoint_filter_comparison.py:174:    def get_QP_matrices(self, *args: Any, **kwargs: Any):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:29:reproduction/scripts/run_official_checkpoint_filter_comparison.py:179:    def solve_QP(self, x: torch.Tensor, u_des: torch.Tensor) -> torch.Tensor:
+work/risk_aware_cbf/notes/interface_keyword_search.txt:37:reproduction/scripts/run_official_runpy_smoke.py:63:    def get_QP_matrices(self, *args, **kwargs):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:38:reproduction/scripts/run_official_runpy_smoke.py:68:    def solve_QP(self, x, u_des):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:45:reproduction/scripts/run_offline_safety_filter_smoke.py:33:from splat.distances import distance_point_ellipsoid  # noqa: E402
+work/risk_aware_cbf/notes/interface_keyword_search.txt:48:reproduction/scripts/run_offline_safety_filter_smoke.py:89:    def query_distance(self, x: torch.Tensor, distance_type: str | None = None, radius: float = 0.0,
+work/risk_aware_cbf/notes/interface_keyword_search.txt:49:reproduction/scripts/run_offline_safety_filter_smoke.py:102:        squared_dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_frame)
+work/risk_aware_cbf/notes/interface_keyword_search.txt:51:reproduction/scripts/run_offline_safety_filter_smoke.py:122:    def get_QP_matrices(self, x, u_des, minimal=True):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:54:reproduction/scripts/test_distance_cbf_sanity.py:17:from splat.distances import distance_point_ellipsoid  # noqa: E402
+work/risk_aware_cbf/notes/interface_keyword_search.txt:55:reproduction/scripts/test_distance_cbf_sanity.py:32:    def query_distance(self, x, distance_type=None, radius=0.0, R_robot=None, S_robot=None, epsilon=0.0):
+work/risk_aware_cbf/notes/interface_keyword_search.txt:56:reproduction/scripts/test_distance_cbf_sanity.py:41:        squared_dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_abs)
+work/risk_aware_cbf/notes/BASELINE_LOGGING_SCHEMA.md:115:The official `CBF.get_QP_matrices` calls `h_rep_minimal`, whose public return value does not expose original Gaussian IDs. The detailed logging wrapper therefore reimplements the same matrix-building logic inside `work/risk_aware_cbf` and records IDs when SciPy's `HalfspaceIntersection.dual_vertices` provides a direct mapping. If the fallback ConvexHull path is used, the mapping is marked incomplete.
+work/risk_aware_cbf/REPORT_RISK_AWARE_CBF_PREPARATION.md:60:means, scales, max/min/mean scale, anisotropy, volume_proxy, distance_to_scene_center, opacity, rotation/quaternion, color_or_sh_norm
+work/risk_aware_cbf/scripts/analyze_trajectory_interaction_features.py:56:        "means": np.asarray([[float(r["mean_x"]), float(r["mean_y"]), float(r["mean_z"])] for r in rows], dtype=float),
+work/risk_aware_cbf/scripts/analyze_trajectory_interaction_features.py:65:    means = gaussians["means"]
+work/risk_aware_cbf/scripts/analyze_trajectory_interaction_features.py:74:        dist = np.linalg.norm(means - point[None, :], axis=1)
+work/risk_aware_cbf/scripts/generate_preparation_report.py:49:    "means",
+work/risk_aware_cbf/scripts/generate_preparation_report.py:50:    "scales",
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:84:    means = to_numpy(loader.means).astype(float)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:85:    scales = to_numpy(loader.scales).astype(float)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:86:    rots = to_numpy(getattr(loader, "rots", None))
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:90:    gaussian_count = int(means.shape[0])
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:91:    scene_center = np.mean(means, axis=0)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:92:    max_scale = np.max(scales, axis=1)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:93:    min_scale = np.min(scales, axis=1)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:94:    mean_scale = np.mean(scales, axis=1)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:96:    volume_proxy = np.prod(scales, axis=1)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:97:    distance_to_scene_center = np.linalg.norm(means - scene_center[None, :], axis=1)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:111:            "mean_x": float(means[idx, 0]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:112:            "mean_y": float(means[idx, 1]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:113:            "mean_z": float(means[idx, 2]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:114:            "scale_x": float(scales[idx, 0]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:115:            "scale_y": float(scales[idx, 1]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:116:            "scale_z": float(scales[idx, 2]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:126:        if rots is not None:
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:127:            for q_idx, value in enumerate(np.asarray(rots[idx]).reshape(-1)):
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:140:        numeric_summary("mean_x", means[:, 0]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:141:        numeric_summary("mean_y", means[:, 1]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:142:        numeric_summary("mean_z", means[:, 2]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:143:        numeric_summary("scale_x", scales[:, 0]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:144:        numeric_summary("scale_y", scales[:, 1]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:145:        numeric_summary("scale_z", scales[:, 2]),
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:157:    if rots is not None:
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:158:        rots_flat = np.asarray(rots).reshape(gaussian_count, -1)
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:159:        for q_idx in range(rots_flat.shape[1]):
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:160:            summary_rows.append(numeric_summary(f"rotation_q{q_idx}", rots_flat[:, q_idx]))
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:192:    available = ["means", "scales", "max/min/mean scale", "anisotropy", "volume_proxy", "distance_to_scene_center"]
+work/risk_aware_cbf/scripts/extract_gaussian_attributes.py:198:    if rots is not None:
+匹配到二进制文件 work/risk_aware_cbf/scripts/__pycache__/run_risk_aware_topk_comparison.cpython-310.pyc
+匹配到二进制文件 work/risk_aware_cbf/scripts/__pycache__/run_baseline_with_detailed_logging.cpython-310.pyc
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:265:def h_rep_minimal_with_indices(A: np.ndarray, b: np.ndarray, pt: np.ndarray, ids: np.ndarray):
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:293:    def get_QP_matrices(self, x, u_des, minimal=True):
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:339:                    Aminimal, lminimal, minimal_ids, mapping_status = h_rep_minimal_with_indices(
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:363:    def solve_QP(self, x, u_des):
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:506:    means = gsplat.means.detach().cpu().numpy()
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:507:    scales = gsplat.scales.detach().cpu().numpy()
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:515:        mean = means[gid]
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:516:        scale = scales[gid]
+work/risk_aware_cbf/scripts/run_baseline_with_detailed_logging.py:708:        "gaussian_count": int(gsplat.means.shape[0]),
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:288:def h_rep_minimal_with_indices(A: np.ndarray, b: np.ndarray, pt: np.ndarray, ids: np.ndarray):
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:393:    def get_QP_matrices(self, x, u_des, minimal=True):
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:439:                    Aminimal, lminimal, minimal_ids, mapping_status = h_rep_minimal_with_indices(
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:463:    def solve_QP(self, x, u_des):
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:495:    def get_QP_matrices(self, x, u_des, minimal=True):
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:536:            means = self.gsplat.means.detach().cpu().numpy()[ids]
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:538:            vectors = means - robot[None, :]
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:773:    means = gsplat.means.detach().cpu().numpy()
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:774:    scales = gsplat.scales.detach().cpu().numpy()
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:782:        mean = means[gid]
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:783:        scale = scales[gid]
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:1011:        "gaussian_count": int(gsplat.means.shape[0]),
+work/risk_aware_cbf/scripts/run_risk_aware_topk_comparison.py:1087:            risk_table = RiskScoreTable(args.risk_score_table, int(gsplat.means.shape[0]))
+reproduction/REPORT_OFFLINE_BASELINE.md:29:- Ellipsoid distance: `splat/distances.py::distance_point_ellipsoid` and `splat/gsplat_utils.py::GSplatLoader.query_distance`.
+reproduction/REPORT_OFFLINE_BASELINE.md:31:- Gaussian pruning / active constraints: `ellipsoids/polytopes_utils.py::h_rep_minimal` called from `CBF.get_QP_matrices`.
+reproduction/notes/STOP_REASON_AND_SUCCESS_DEFINITION.md:32:`success=True` means one of:
+reproduction/notes/STOP_REASON_AND_SUCCESS_DEFINITION.md:41:`stopped_before_goal` means the state changed by less than `goal_tolerance`, but the previous state was not within `goal_tolerance` of the goal.
+reproduction/notes/STOP_REASON_AND_SUCCESS_DEFINITION.md:47:`collision=True` means the minimum official safety value along the evaluated trajectory is negative:
+reproduction/notes/run_official_runpy_smoke_top260.txt:63:    def get_QP_matrices(self, *args, **kwargs):
+reproduction/notes/run_official_runpy_smoke_top260.txt:68:    def solve_QP(self, x, u_des):
+reproduction/notes/run_official_runpy_smoke_top260.txt:242:        "gaussian_count": int(gsplat.means.shape[0]),
+reproduction/notes/core_keyword_search.txt:32:./splat/distances.py:96:def distance_point_ellipsoid(s, x):
+reproduction/notes/core_keyword_search.txt:40:./README.md:114:Run the ```visualize.py```, setting your scene name and method type properly so that the script correctly extracts the Gaussian Splatting model and the saved trajectory data (that was created through ```run.py```). This script will launch viser and load your trajectories into the visualizer. If you run into issues where viser informs you that ```add_gaussian_splats``` does not exist, this means you have an outdated version of viser (likely one that came packaged with Nerfstudio) and will need to upgrade [viser](https://github.com/nerfstudio-project/viser). Afterwards, navigate to the specified port in the browser to visualize the trajectories and the ellipsoidal representation of the Gaussian Splat. 
+reproduction/notes/core_keyword_search.txt:45:./splat/gsplat_utils.py:10:from splat.distances import distance_point_ellipsoid, batch_point_distance, batch_squared_point_distance, batch_mahalanobis_distance
+reproduction/notes/core_keyword_search.txt:46:./splat/gsplat_utils.py:13:class GSplatLoader():
+reproduction/notes/core_keyword_search.txt:47:./splat/gsplat_utils.py:103:    def query_distance(self, x, distance_type = None, radius=0., R_robot=None, S_robot=None, epsilon=0.):
+reproduction/notes/core_keyword_search.txt:52:./splat/gsplat_utils.py:169:            dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_frame)
+reproduction/notes/core_keyword_search.txt:56:./ns_utils/nerfstudio_utils.py:166:            means, features_dc, *_  = self.pipeline.model.split_gaussians(split_mask, split_params['n_split_samples'])
+reproduction/notes/core_keyword_search.txt:59:./cbf/cbf_utils.py:8:from ellipsoids.polytopes_utils import h_rep_minimal, find_interior
+reproduction/notes/core_keyword_search.txt:66:./cbf/cbf_utils.py:41:    def get_QP_matrices(self, x, u_des, minimal=True):
+reproduction/notes/core_keyword_search.txt:80:./cbf/cbf_utils.py:105:                    Aminimal, lminimal = h_rep_minimal(collisionless_A, collisionless_l, feasible_pt)
+reproduction/notes/core_keyword_search.txt:84:./cbf/cbf_utils.py:125:    def solve_QP(self, x, u_des):
+匹配到二进制文件 reproduction/scripts/__pycache__/test_distance_cbf_sanity.cpython-310.pyc
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:174:    def get_QP_matrices(self, *args: Any, **kwargs: Any):
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:179:    def solve_QP(self, x: torch.Tensor, u_des: torch.Tensor) -> torch.Tensor:
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:409:        "gaussian_count": int(gsplat.means.shape[0]),
+reproduction/scripts/run_official_checkpoint_filter_comparison.py:840:        gaussian_count = int(gsplat.means.shape[0])
+reproduction/scripts/run_official_runpy_smoke.py:63:    def get_QP_matrices(self, *args, **kwargs):
+reproduction/scripts/run_official_runpy_smoke.py:68:    def solve_QP(self, x, u_des):
+reproduction/scripts/run_official_runpy_smoke.py:242:        "gaussian_count": int(gsplat.means.shape[0]),
+reproduction/scripts/run_offline_safety_filter_smoke.py:33:from splat.distances import distance_point_ellipsoid  # noqa: E402
+reproduction/scripts/run_offline_safety_filter_smoke.py:51:        means = obj["means"].float()
+reproduction/scripts/run_offline_safety_filter_smoke.py:52:        rots = obj["rots"].float()
+reproduction/scripts/run_offline_safety_filter_smoke.py:53:        scales = obj["scales"].float().clamp_min(1e-8)
+reproduction/scripts/run_offline_safety_filter_smoke.py:54:        finite = torch.isfinite(means).all(dim=1) & torch.isfinite(rots).all(dim=1) & torch.isfinite(scales).all(dim=1)
+reproduction/scripts/run_offline_safety_filter_smoke.py:55:        means, rots, scales = means[finite], rots[finite], scales[finite]
+reproduction/scripts/run_offline_safety_filter_smoke.py:59:        bbox = ((means >= lo) & (means <= hi)).all(dim=1)
+reproduction/scripts/run_offline_safety_filter_smoke.py:63:            dist2 = torch.sum((means - center) ** 2, dim=1)
+reproduction/scripts/run_offline_safety_filter_smoke.py:67:            local_dist2 = torch.sum((means[idx] - center) ** 2, dim=1)
+reproduction/scripts/run_offline_safety_filter_smoke.py:71:        self.means = means[idx].to(device)
+reproduction/scripts/run_offline_safety_filter_smoke.py:72:        self.rots = rots[idx].to(device)
+reproduction/scripts/run_offline_safety_filter_smoke.py:73:        self.scales = scales[idx].to(device)
+reproduction/scripts/run_offline_safety_filter_smoke.py:74:        self.covs = compute_cov(self.rots, self.scales)
+reproduction/scripts/run_offline_safety_filter_smoke.py:75:        self.covs_inv = compute_cov(self.rots, 1.0 / self.scales)
+reproduction/scripts/run_offline_safety_filter_smoke.py:76:        self.max_active = min(max_active, self.means.shape[0])
+reproduction/scripts/run_offline_safety_filter_smoke.py:78:        self.pool_size = int(self.means.shape[0])
+reproduction/scripts/run_offline_safety_filter_smoke.py:83:        dist2 = torch.sum((self.means - pos) ** 2, dim=1)
+reproduction/scripts/run_offline_safety_filter_smoke.py:87:        return self.means[active], self.rots[active], self.scales[active]
+reproduction/scripts/run_offline_safety_filter_smoke.py:89:    def query_distance(self, x: torch.Tensor, distance_type: str | None = None, radius: float = 0.0,
+reproduction/scripts/run_offline_safety_filter_smoke.py:95:        means, rots_q, scales = self._active_subset(x)
+reproduction/scripts/run_offline_safety_filter_smoke.py:96:        rots = quaternion_to_rotation_matrix(rots_q)
+reproduction/scripts/run_offline_safety_filter_smoke.py:97:        sorted_scales, sorted_inds = torch.sort(scales, dim=-1, descending=True)
+reproduction/scripts/run_offline_safety_filter_smoke.py:98:        rots = torch.gather(rots, 2, sorted_inds[..., None, :].expand_as(rots))
+reproduction/scripts/run_offline_safety_filter_smoke.py:99:        x_local_frame = torch.bmm(torch.transpose(rots, 1, 2), (x[..., :3] - means).unsqueeze(-1)).squeeze() + 1e-8
+reproduction/scripts/run_offline_safety_filter_smoke.py:102:        squared_dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_frame)
+reproduction/scripts/run_offline_safety_filter_smoke.py:103:        y = torch.bmm(rots, (flip * yhat).unsqueeze(-1)).squeeze(-1) + means
+reproduction/scripts/run_offline_safety_filter_smoke.py:104:        phi = torch.sign(torch.sum((1.0 / sorted_scales) ** 2 * (x_local_frame ** 2), dim=-1) - 1.0)
+reproduction/scripts/run_offline_safety_filter_smoke.py:122:    def get_QP_matrices(self, x, u_des, minimal=True):
+reproduction/scripts/test_distance_cbf_sanity.py:17:from splat.distances import distance_point_ellipsoid  # noqa: E402
+reproduction/scripts/test_distance_cbf_sanity.py:26:        self.means = torch.tensor([[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]], dtype=torch.float32, device=device)
+reproduction/scripts/test_distance_cbf_sanity.py:27:        self.rots = torch.tensor([[0.9238795, 0.3826834, 0.0, 0.0], [0.9238795, 0.3826834, 0.0, 0.0]], dtype=torch.float32, device=device)
+reproduction/scripts/test_distance_cbf_sanity.py:28:        self.scales = torch.tensor([[0.10, 0.10, 0.10], [0.10, 0.10, 0.10]], dtype=torch.float32, device=device)
+reproduction/scripts/test_distance_cbf_sanity.py:29:        self.covs = compute_cov(self.rots, self.scales)
+reproduction/scripts/test_distance_cbf_sanity.py:30:        self.covs_inv = compute_cov(self.rots, 1.0 / self.scales)
+reproduction/scripts/test_distance_cbf_sanity.py:32:    def query_distance(self, x, distance_type=None, radius=0.0, R_robot=None, S_robot=None, epsilon=0.0):
+reproduction/scripts/test_distance_cbf_sanity.py:35:        rots = quaternion_to_rotation_matrix(self.rots)
+reproduction/scripts/test_distance_cbf_sanity.py:36:        sorted_scales, sorted_inds = torch.sort(self.scales, dim=-1, descending=True)
+reproduction/scripts/test_distance_cbf_sanity.py:37:        rots = torch.gather(rots, 2, sorted_inds[..., None, :].expand_as(rots))
+reproduction/scripts/test_distance_cbf_sanity.py:38:        x_local = torch.bmm(torch.transpose(rots, 1, 2), (x[..., :3] - self.means).unsqueeze(-1)).squeeze() + 1e-8
+reproduction/scripts/test_distance_cbf_sanity.py:41:        squared_dist, _, hess, yhat = distance_point_ellipsoid(sorted_scales + 1e-8, x_local_abs)
+reproduction/scripts/test_distance_cbf_sanity.py:42:        y = torch.bmm(rots, (flip * yhat).unsqueeze(-1)).squeeze(-1) + self.means
+reproduction/scripts/test_distance_cbf_sanity.py:43:        phi = torch.sign(torch.sum((1.0 / sorted_scales) ** 2 * (x_local_abs ** 2), dim=-1) - 1.0)
+reproduction/CODE_STRUCTURE.md:6:| Gaussian mean / scale / rotation / covariance extraction | splat/gsplat_utils.py; ellipsoids/covariance_utils.py | GSplatLoader attributes; compute_cov; quaternion_to_rotation_matrix | Means/rots/scales/covs extracted in official loader. Smoke directly loads real tensor snapshot and calls official covariance utilities. | yes |
+reproduction/CODE_STRUCTURE.md:7:| sphere-to-ellipsoid distance | splat/distances.py; splat/gsplat_utils.py | distance_point_ellipsoid; GSplatLoader.query_distance | Official ball-to-ellipsoid squared distance used by smoke adapter. | yes |
+reproduction/CODE_STRUCTURE.md:10:| Gaussian pruning / active constraint selection | cbf/cbf_utils.py; ellipsoids/polytopes_utils.py | h_rep_minimal; find_interior | Official minimal halfspace pruning is called by CBF. Smoke additionally caps nearest active candidates before CBF for tractability and reports active constraints. | yes |

@@ -1,0 +1,31 @@
+/disk1/zlab/projects/safer-splat/ns_utils/nerfstudio_utils.py:117: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  assert(self.pipeline.model, SplatfactoModel)
+[2026-06-29T13:31:48] script=/disk1/zlab/projects/safer-splat/reproduction/scripts/run_official_checkpoint_filter_comparison.py
+[2026-06-29T13:31:48] scene=stonehenge methods=['safer_splat_filter'] trials=0-2
+[2026-06-29T13:31:48] device=cuda torch=2.1.2+cu118 cuda_available=True
+[2026-06-29T13:31:48] max_steps=1600 goal_tolerance=0.001
+[2026-06-29T13:31:48] min_safety_h_note=official GSplatLoader.query_distance safety h value; not meters
+[2026-06-29T13:31:48] checkpoint=outputs/stonehenge/splatfacto/2024-09-11_100724/config.yml
+Skipping 0 files in dataset split train.
+Skipping 0 files in dataset split test.
+Loading latest checkpoint from load_dir
+✅ Done loading checkpoint from outputs/stonehenge/splatfacto/2024-09-11_100724/nerfstudio_models/step-000029999.ckpt
+There are 116446 Gaussians in the GSplat model
+[2026-06-29T13:31:53] loaded_gsplat_seconds=4.313170 gaussian_count=116446
+[2026-06-29T13:31:53] start method=safer_splat_filter trial=0
+ball-to-ellipsoid
+[2026-06-29T13:32:17] done method=safer_splat_filter trial=0 success=False collision=False min_safety_h=0.0008511263877153397 steps=325 stop=stopped_before_goal
+[2026-06-29T13:32:18] refreshed rows=1 summaries=1
+[2026-06-29T13:32:18] start method=safer_splat_filter trial=1
+ball-to-ellipsoid
+[2026-06-29T13:32:27] done method=safer_splat_filter trial=1 success=False collision=False min_safety_h=0.0008069269824773073 steps=114 stop=stopped_before_goal
+[2026-06-29T13:32:27] refreshed rows=2 summaries=1
+[2026-06-29T13:32:27] start method=safer_splat_filter trial=2
+ball-to-ellipsoid
+[2026-06-29T13:32:35] done method=safer_splat_filter trial=2 success=False collision=False min_safety_h=0.001313697430305183 steps=104 stop=stopped_before_goal
+[2026-06-29T13:32:36] refreshed rows=3 summaries=1
+[2026-06-29T13:32:36] final_summary=[{"scene": "stonehenge", "method": "safer_splat_filter", "rows": 3, "total_rows": 3, "success_count": 0, "feasible_count": 3, "collision_count": 0, "collision_free_count": 3, "error_count": 0, "stopped_before_goal_count": 3, "max_steps_loose_success_count": 0, "solver_failed_count": 0, "qp_infeasible_count_sum": 0, "min_safety_h_min": 0.0008069269824773073, "min_safety_h_mean": 0.0009905836001659434, "min_safety_h_median": 0.0008511263877153397, "initial_goal_distance_mean": 0.7841074169021466, "final_goal_distance_mean": 0.4690688264632958, "closest_goal_distance_mean": 0.4690688264632958, "goal_distance_reduction_mean": 0.31503859043885074, "goal_distance_reduction_ratio_mean": 0.4018082982258126, "reached_goal_tolerance_count": 0, "path_length_mean": 0.3329262336095174, "num_steps_mean": 181.0, "runtime_mean_mean": 0.05858484380985549, "runtime_p95_mean": 0.06735669563834866, "intervention_rate_mean": 0.9591520467836258, "control_deviation_mean_mean": 0.05253575519248688, "control_deviation_max_max": 0.10606213035438207, "active_constraints_mean_mean": 416.41058929374714, "active_constraints_p95_mean": 790.6833333333333, "seconds_total_sum": 41.234075237065554, "worst_trial": 1, "worst_min_safety_h": 0.0008069269824773073}]
+[2026-06-29T13:32:36] wrote=reproduction/results/official_checkpoint_filter_comparison_stonehenge_steps1600_diag/trials.csv
+[2026-06-29T13:32:36] wrote=reproduction/results/official_checkpoint_filter_comparison_stonehenge_steps1600_diag/summary.csv
+[2026-06-29T13:32:36] wrote=reproduction/results/official_checkpoint_filter_comparison_stonehenge_steps1600_diag/metrics.json
+[2026-06-29T13:32:36] wrote=reproduction/results/official_checkpoint_filter_comparison_stonehenge_steps1600_diag/comparison_plot.png
